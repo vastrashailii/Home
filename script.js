@@ -5,7 +5,7 @@ const products = [
         id: 1,
         name: "Jaipuri Leaf Print Bedsheet",
         category: "bedsheets",
-        price: 369,
+        price: 1299,
         description: "Beautiful block print with traditional leaf motifs, 100% cotton, double bed with 2 pillow covers",
         images: [
             "images/bedsheet-leaf-print.jpg"
@@ -17,7 +17,7 @@ const products = [
         id: 2,
         name: "Sanganeri Geometric Bedsheet",
         category: "bedsheets",
-        price: 599,
+        price: 1399,
         description: "Stunning geometric patterns with floral borders, premium cotton, includes pillow covers",
         images: [
             "images/bedsheet-geometric-gold.jpg"
@@ -29,7 +29,7 @@ const products = [
         id: 3,
         name: "Peacock & Bird Motif Bedsheet",
         category: "bedsheets",
-        price: 599,
+        price: 1499,
         description: "Elegant peacock and bird motifs, double bed, soft cotton fabric",
         images: [
             "images/bedsheet-peacock-blue.jpg"
@@ -41,19 +41,19 @@ const products = [
         id: 4,
         name: "Paisley Print Bedsheet",
         category: "bedsheets",
-        price: 599,
+        price: 1199,
         description: "Contemporary paisley design, breathable cotton, king size",
         images: [
             "images/bedsheet-paisley-swirl.jpg"
         ],
         colors: ["Green", "Pink", "Beige"],
-        availableColors: 4
+        availableColors: 3
     },
     {
         id: 5,
         name: "Elephant & Peacock Bedsheet",
         category: "bedsheets",
-        price: 599,
+        price: 1599,
         description: "Traditional Rajasthani elephant and peacock motifs, vibrant colors, 2 pillow covers",
         images: [
             "images/bedsheet-elephant-blue-green.jpg",
@@ -66,7 +66,7 @@ const products = [
         id: 6,
         name: "Floral Border Bedsheet",
         category: "bedsheets",
-        price: 599,
+        price: 1299,
         description: "Beautiful floral patterns with decorative borders, single bed size",
         images: [
             "images/bedsheet-floral-trio.jpg"
@@ -78,7 +78,7 @@ const products = [
         id: 7,
         name: "Mandala Design Bedsheet",
         category: "bedsheets",
-        price: 599,
+        price: 1699,
         description: "Intricate mandala designs, premium quality cotton",
         images: [
             "images/bedsheet-mandala-collection.jpg",
@@ -89,24 +89,23 @@ const products = [
     },
     {
         id: 8,
-        name: "Mandala Print Bedsheet",
+        name: "Ajrak Geometric Print Bedsheet",
         category: "bedsheets",
-        price: 649,
+        price: 1599,
         description: "Traditional Ajrak geometric patterns, natural dyes, king size",
         images: [
             "images/bedsheet-red-geometric.jpg",
-			"images/bedsheet-orange-geometric.jpg",
-          "images/bedsheet-blue-elephant.jpg",
-            "images/bedsheet-blue-mandala.jpg"
+            "images/bedsheet-blue-elephant.jpg",
+            "images/bedsheet-orange-geometric.jpg"
         ],
         colors: ["Red", "Blue", "Orange"],
-        availableColors: 4
+        availableColors: 3
     },
     {
         id: 9,
         name: "Warli Tribal Art Bedsheet",
         category: "bedsheets",
-        price: 369,
+        price: 1799,
         description: "Authentic Warli tribal art design, unique cultural motifs, double bed",
         images: [
             "images/bedsheet-warli-art.jpg"
@@ -120,7 +119,7 @@ const products = [
         id: 14,
         name: "Floral Print Cotton Kurti",
         category: "suits",
-        price: 499,
+        price: 699,
         description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
         images: [
             "images/kurti-yellow-floral.jpg",
@@ -134,7 +133,7 @@ const products = [
         id: 15,
         name: "Paisley Print Cotton Kurti",
         category: "suits",
-        price: 499,
+        price: 799,
         description: "Elegant paisley print, breathable cotton fabric, perfect for office wear",
         images: [
             "images/kurti-grey-paisley.jpg"
@@ -146,37 +145,26 @@ const products = [
         id: 18,
         name: "Embroidered Cotton Suit Set",
         category: "suits",
-        price: 1299,
+        price: 2299,
         description: "Elegant embroidered suit with beautiful work, includes kurta and dupatta",
         images: [
             "images/suit-sky-blue-embroidered.jpg",
+            "images/suit-pink-embroidered.jpg"
         ],
         colors: ["Sky Blue", "Pink", "Mint Green"],
         availableColors: 3
-    },
-	{
-        id: 19,
-        name: "Anarkali Suit",
-        category: "suits",
-        price: 1299,
-        description: "Beautiful Anarkali suit with floral print on Neck & hand & dupatta, Cotton Size: L,XL,XXL,XXXL",
-        images: [
-            "images/suit-pink-embroidered.jpg"
-        ],
-        colors: ["Turquoise", "Pink", "Yellow"],
-       availableColors: 2
     },
     {
         id: 20,
         name: "Palazzo Suit Set",
         category: "suits",
-        price: 1599,
+        price: 2199,
         description: "Beautiful palazzo suit with floral print, includes kurta, palazzo & dupatta",
         images: [
             "images/suit-turquoise-palazzo.jpg"
         ],
         colors: ["Turquoise", "Pink", "Yellow"],
-        availableColors: 1
+        availableColors: 3
     }
 ];
 
@@ -330,34 +318,18 @@ function setupEventListeners() {
     });
 }
 
-// Add to Cart - Handles color variants separately
+// Add to Cart
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    const selectedImageIndex = currentImageIndex[productId] || 0;
-    const selectedImage = product.images[selectedImageIndex];
-    
-    // Determine color variant name
-    let selectedColor = 'Default';
-    if (product.colors && product.colors[selectedImageIndex]) {
-        selectedColor = product.colors[selectedImageIndex];
-    }
-    
-    // Check if this exact variant (product + color) already exists in cart
-    const existingItem = cart.find(item => 
-        item.id === productId && item.selectedImage === selectedImage
-    );
+    const existingItem = cart.find(item => item.id === productId);
     
     if (existingItem) {
-        // Same product, same color → increase quantity
         existingItem.quantity += 1;
     } else {
-        // Same product, different color → add as new item
         cart.push({
             ...product,
             quantity: 1,
-            selectedImage: selectedImage,
-            selectedColor: selectedColor,
-            cartItemId: `${productId}-${selectedImageIndex}` // Unique ID for this variant
+            selectedImage: product.images[currentImageIndex[productId] || 0]
         });
     }
     
@@ -367,12 +339,12 @@ function addToCart(productId) {
     // Show feedback
     const btn = event.target;
     const originalText = btn.textContent;
-    btn.textContent = `Added ${selectedColor} ✓`;
+    btn.textContent = 'Added ✓';
     btn.style.background = '#25D366';
     setTimeout(() => {
         btn.textContent = originalText;
         btn.style.background = '';
-    }, 2000);
+    }, 1500);
 }
 
 // Update Cart Display
@@ -399,29 +371,26 @@ function updateCart() {
                 </div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${item.name}</div>
-                    ${item.selectedColor && item.selectedColor !== 'Default' 
-                        ? `<div class="cart-item-color">Color: ${item.selectedColor}</div>` 
-                        : ''}
                     <div class="cart-item-price">₹${item.price}</div>
                     <div class="cart-item-quantity">
-                        <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', -1)">-</button>
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
                         <span>${item.quantity}</span>
-                        <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', 1)">+</button>
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
                     </div>
                 </div>
-                <button class="remove-item" onclick="removeFromCart('${item.cartItemId}')">×</button>
+                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
             </div>
         `).join('');
     }
 }
 
-// Update Quantity - Works with unique cart item IDs
-function updateQuantity(cartItemId, change) {
-    const item = cart.find(i => i.cartItemId === cartItemId);
+// Update Quantity
+function updateQuantity(productId, change) {
+    const item = cart.find(i => i.id === productId);
     if (item) {
         item.quantity += change;
         if (item.quantity <= 0) {
-            removeFromCart(cartItemId);
+            removeFromCart(productId);
         } else {
             updateCart();
             saveCartToStorage();
@@ -429,9 +398,9 @@ function updateQuantity(cartItemId, change) {
     }
 }
 
-// Remove from Cart - Works with unique cart item IDs
-function removeFromCart(cartItemId) {
-    cart = cart.filter(item => item.cartItemId !== cartItemId);
+// Remove from Cart
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
     updateCart();
     saveCartToStorage();
 }
@@ -473,32 +442,7 @@ function closeCheckout() {
     document.body.style.overflow = '';
 }
 
-// Open/Close Policy Modals
-function openPolicyModal(modalId) {
-    document.getElementById(modalId).classList.add('active');
-    document.getElementById('modalOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closePolicyModal(modalId) {
-    document.getElementById(modalId).classList.remove('active');
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Close modal when clicking overlay
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('modalOverlay').addEventListener('click', function() {
-        // Close all modals
-        document.querySelectorAll('.modal.active').forEach(modal => {
-            modal.classList.remove('active');
-        });
-        this.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-// Handle Checkout - Send to WhatsApp with color details
+// Handle Checkout - Send to WhatsApp
 function handleCheckout(e) {
     e.preventDefault();
     
@@ -523,9 +467,6 @@ function handleCheckout(e) {
     orderDetails += `\n🛍️ *Order Items:*\n`;
     cart.forEach(item => {
         orderDetails += `\n📦 ${item.name}\n`;
-        if (item.selectedColor && item.selectedColor !== 'Default') {
-            orderDetails += `   🎨 Color: ${item.selectedColor}\n`;
-        }
         orderDetails += `   Quantity: ${item.quantity}\n`;
         orderDetails += `   Price: ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
     });
