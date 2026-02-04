@@ -46,7 +46,7 @@ const products = [
         images: [
             "images/bedsheet-paisley-swirl.jpg"
         ],
-        //colors: ["Green", "Pink", "Beige"],
+        colors: ["Green", "Pink", "Beige"],
         availableColors: 4
     },
     {
@@ -111,7 +111,7 @@ const products = [
         images: [
             "images/bedsheet-warli-art.jpg"
         ],
-        //colors: ["Blue & White", "Black & White"],
+        colors: ["Blue & White", "Black & White"],
         availableColors: 2
     },
     
@@ -124,11 +124,11 @@ const products = [
         description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
         images: [
             "images/kurti-yellow-floral.jpg",
-          //  "images/kurti-blue-floral.jpg",
-           // "images/kurti-aqua-floral.jpg"
+            "images/kurti-blue-floral.jpg",
+            "images/kurti-aqua-floral.jpg"
         ],
-        //colors: ["Yellow", "Navy Blue", "Aqua Blue"],
-        //availableColors: 3
+        colors: ["Yellow", "Navy Blue", "Aqua Blue"],
+        availableColors: 3
     },
     {
         id: 15,
@@ -139,8 +139,8 @@ const products = [
         images: [
             "images/kurti-grey-paisley.jpg"
         ],
-        //colors: ["Grey", "Blue", "Beige"],
-        //availableColors: 3
+        colors: ["Grey", "Blue", "Beige"],
+        availableColors: 3
     },
     {
         id: 18,
@@ -151,8 +151,8 @@ const products = [
         images: [
             "images/suit-sky-blue-embroidered.jpg",
         ],
-        //colors: ["Sky Blue", "Pink", "Mint Green"],
-        //availableColors: 3
+        colors: ["Sky Blue", "Pink", "Mint Green"],
+        availableColors: 3
     },
 	{
         id: 19,
@@ -163,7 +163,7 @@ const products = [
         images: [
             "images/suit-pink-embroidered.jpg"
         ],
-       // colors: ["Turquoise", "Pink", "Yellow"],
+        colors: ["Turquoise", "Pink", "Yellow"],
        availableColors: 2
     },
     {
@@ -175,8 +175,8 @@ const products = [
         images: [
             "images/suit-turquoise-palazzo.jpg"
         ],
-       // colors: ["Turquoise", "Pink", "Yellow"],
-       // availableColors: 1
+        colors: ["Turquoise", "Pink", "Yellow"],
+        availableColors: 1
     }
 ];
 
