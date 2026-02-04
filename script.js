@@ -1,172 +1,176 @@
-// Product Database - Updated with Real Vastra Shailii Products
+// Product Database - With Color Variants Support
 const products = [
-    // Bedsheets Collection
+    // Bedsheets with Color Variants
     {
         id: 1,
         name: "Jaipuri Leaf Print Bedsheet",
         category: "bedsheets",
         price: 1299,
         description: "Beautiful block print with traditional leaf motifs, 100% cotton, double bed with 2 pillow covers",
-        image: "images/bedsheet-leaf-print.jpg"
+        images: [
+            "images/bedsheet-leaf-print.jpg"
+        ],
+        colors: ["Beige & Black", "Red & Black"],
+        availableColors: 2
     },
     {
         id: 2,
-        name: "Sanganeri Geometric Gold Bedsheet",
+        name: "Sanganeri Geometric Bedsheet",
         category: "bedsheets",
         price: 1399,
         description: "Stunning geometric patterns with floral borders, premium cotton, includes pillow covers",
-        image: "images/bedsheet-geometric-gold.jpg"
+        images: [
+            "images/bedsheet-geometric-gold.jpg"
+        ],
+        colors: ["Gold", "Multiple Colors"],
+        availableColors: 3
     },
     {
         id: 3,
-        name: "Peacock Blue Cotton Bedsheet",
+        name: "Peacock & Bird Motif Bedsheet",
         category: "bedsheets",
         price: 1499,
-        description: "Elegant peacock and bird motifs in blue tones, double bed, soft cotton fabric",
-        image: "images/bedsheet-peacock-blue.jpg"
+        description: "Elegant peacock and bird motifs, double bed, soft cotton fabric",
+        images: [
+            "images/bedsheet-peacock-blue.jpg"
+        ],
+        colors: ["Blue", "White"],
+        availableColors: 2
     },
     {
         id: 4,
-        name: "Paisley Swirl Print Bedsheet",
+        name: "Paisley Print Bedsheet",
         category: "bedsheets",
         price: 1199,
-        description: "Contemporary paisley design in multiple colors, breathable cotton, king size",
-        image: "images/bedsheet-paisley-swirl.jpg"
+        description: "Contemporary paisley design, breathable cotton, king size",
+        images: [
+            "images/bedsheet-paisley-swirl.jpg"
+        ],
+        colors: ["Green", "Pink", "Beige"],
+        availableColors: 3
     },
     {
         id: 5,
-        name: "Elephant Print Bedsheet - Blue & Green",
+        name: "Elephant & Peacock Bedsheet",
         category: "bedsheets",
         price: 1599,
         description: "Traditional Rajasthani elephant and peacock motifs, vibrant colors, 2 pillow covers",
-        image: "images/bedsheet-elephant-blue-green.jpg"
+        images: [
+            "images/bedsheet-elephant-blue-green.jpg",
+            "images/bedsheet-elephant-brown.jpg"
+        ],
+        colors: ["Blue", "Green", "Brown"],
+        availableColors: 2
     },
     {
         id: 6,
-        name: "Floral Trio Bedsheet Set",
+        name: "Floral Border Bedsheet",
         category: "bedsheets",
         price: 1299,
-        description: "Three beautiful floral patterns, perfect for mix and match, single bed size",
-        image: "images/bedsheet-floral-trio.jpg"
+        description: "Beautiful floral patterns with decorative borders, single bed size",
+        images: [
+            "images/bedsheet-floral-trio.jpg"
+        ],
+        colors: ["Yellow", "Pink", "Teal"],
+        availableColors: 3
     },
     {
         id: 7,
-        name: "Mandala Collection Bedsheet",
+        name: "Mandala Design Bedsheet",
         category: "bedsheets",
         price: 1699,
-        description: "Intricate mandala designs in multiple color combinations, premium quality cotton",
-        image: "images/bedsheet-mandala-collection.jpg"
+        description: "Intricate mandala designs, premium quality cotton",
+        images: [
+            "images/bedsheet-mandala-collection.jpg",
+            "images/bedsheet-blue-mandala.jpg"
+        ],
+        colors: ["Multicolor", "Blue", "Red", "Green"],
+        availableColors: 4
     },
     {
         id: 8,
-        name: "Elephant & Paisley Bedsheet",
+        name: "Ajrak Geometric Print Bedsheet",
         category: "bedsheets",
-        price: 1399,
-        description: "Classic Barmeri print with elephants and paisley motifs, brown tones, double bed",
-        image: "images/bedsheet-elephant-brown.jpg"
+        price: 1599,
+        description: "Traditional Ajrak geometric patterns, natural dyes, king size",
+        images: [
+            "images/bedsheet-red-geometric.jpg",
+            "images/bedsheet-blue-elephant.jpg",
+            "images/bedsheet-orange-geometric.jpg"
+        ],
+        colors: ["Red", "Blue", "Orange"],
+        availableColors: 3
     },
     {
         id: 9,
-        name: "Blue Mandala Premium Bedsheet",
+        name: "Warli Tribal Art Bedsheet",
         category: "bedsheets",
         price: 1799,
-        description: "Rich blue mandala pattern with elephant border, colorfast dyes, luxury cotton",
-        image: "images/bedsheet-blue-mandala.jpg"
-    },
-    {
-        id: 10,
-        name: "Red Geometric Ajrak Bedsheet",
-        category: "bedsheets",
-        price: 1599,
-        description: "Traditional Ajrak geometric patterns in red and yellow, natural dyes, king size",
-        image: "images/bedsheet-red-geometric.jpg"
-    },
-    {
-        id: 11,
-        name: "Blue Elephant Ethnic Bedsheet",
-        category: "bedsheets",
-        price: 1699,
-        description: "Royal blue with decorative elephant and peacock motifs, premium block print",
-        image: "images/bedsheet-blue-elephant.jpg"
-    },
-    {
-        id: 12,
-        name: "Orange Geometric Bedsheet",
-        category: "bedsheets",
-        price: 1499,
-        description: "Vibrant orange with traditional geometric patterns, soft cotton, includes pillow covers",
-        image: "images/bedsheet-orange-geometric.jpg"
-    },
-    {
-        id: 13,
-        name: "Warli Art Bedsheet",
-        category: "bedsheets",
-        price: 1799,
-        description: "Authentic Warli tribal art design in blue and white, unique cultural motifs, double bed",
-        image: "images/bedsheet-warli-art.jpg"
+        description: "Authentic Warli tribal art design, unique cultural motifs, double bed",
+        images: [
+            "images/bedsheet-warli-art.jpg"
+        ],
+        colors: ["Blue & White", "Black & White"],
+        availableColors: 2
     },
     
-    // Kurtis & Suits Collection
+    // Kurtis & Suits
     {
         id: 14,
-        name: "Yellow Floral Cotton Kurti",
+        name: "Floral Print Cotton Kurti",
         category: "suits",
         price: 699,
-        description: "Beautiful yellow floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
-        image: "images/kurti-yellow-floral.jpg"
+        description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
+        images: [
+            "images/kurti-yellow-floral.jpg",
+            "images/kurti-blue-floral.jpg",
+            "images/kurti-aqua-floral.jpg"
+        ],
+        colors: ["Yellow", "Navy Blue", "Aqua Blue"],
+        availableColors: 3
     },
     {
         id: 15,
-        name: "Grey Paisley Cotton Kurti",
+        name: "Paisley Print Cotton Kurti",
         category: "suits",
         price: 799,
-        description: "Elegant grey paisley print, breathable cotton fabric, perfect for office wear",
-        image: "images/kurti-grey-paisley.jpg"
-    },
-    {
-        id: 16,
-        name: "Blue Floral Print Kurti",
-        category: "suits",
-        price: 899,
-        description: "Navy blue with intricate floral patterns, button detail, straight cut, all sizes",
-        image: "images/kurti-blue-floral.jpg"
-    },
-    {
-        id: 17,
-        name: "Aqua Floral Cotton Kurti",
-        category: "suits",
-        price: 849,
-        description: "Fresh aqua blue with grey floral print, comfortable daily wear, premium cotton",
-        image: "images/kurti-aqua-floral.jpg"
+        description: "Elegant paisley print, breathable cotton fabric, perfect for office wear",
+        images: [
+            "images/kurti-grey-paisley.jpg"
+        ],
+        colors: ["Grey", "Blue", "Beige"],
+        availableColors: 3
     },
     {
         id: 18,
-        name: "Sky Blue Embroidered Suit",
+        name: "Embroidered Cotton Suit Set",
         category: "suits",
         price: 2299,
-        description: "Elegant sky blue suit with beautiful embroidery, includes kurta and dupatta, special occasions",
-        image: "images/suit-sky-blue-embroidered.jpg"
-    },
-    {
-        id: 19,
-        name: "Pink Embroidered Suit Set",
-        category: "suits",
-        price: 2499,
-        description: "Vibrant pink suit with traditional embroidery, 3-piece set with dupatta, festive wear",
-        image: "images/suit-pink-embroidered.jpg"
+        description: "Elegant embroidered suit with beautiful work, includes kurta and dupatta",
+        images: [
+            "images/suit-sky-blue-embroidered.jpg",
+            "images/suit-pink-embroidered.jpg"
+        ],
+        colors: ["Sky Blue", "Pink", "Mint Green"],
+        availableColors: 3
     },
     {
         id: 20,
-        name: "Turquoise Palazzo Suit",
+        name: "Palazzo Suit Set",
         category: "suits",
         price: 2199,
-        description: "Beautiful turquoise palazzo suit with floral print, includes kurta, palazzo & dupatta",
-        image: "images/suit-turquoise-palazzo.jpg"
+        description: "Beautiful palazzo suit with floral print, includes kurta, palazzo & dupatta",
+        images: [
+            "images/suit-turquoise-palazzo.jpg"
+        ],
+        colors: ["Turquoise", "Pink", "Yellow"],
+        availableColors: 3
     }
 ];
 
 // Shopping Cart
 let cart = [];
+let currentImageIndex = {};
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
@@ -175,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCartFromStorage();
 });
 
-// Load Products
+// Load Products with Image Gallery
 function loadProducts(category = 'all') {
     const productsGrid = document.getElementById('productsGrid');
     productsGrid.innerHTML = '';
@@ -189,14 +193,47 @@ function loadProducts(category = 'all') {
         productCard.className = 'product-card';
         productCard.style.animationDelay = `${index * 0.1}s`;
         
+        // Initialize current image index
+        currentImageIndex[product.id] = 0;
+        
+        // Build color badges
+        const colorBadges = product.colors.slice(0, 3).map(color => 
+            `<span class="color-badge">${color}</span>`
+        ).join('');
+        
+        const moreColors = product.availableColors > 3 
+            ? `<span class="color-badge">+${product.availableColors - 3} more</span>` 
+            : '';
+        
+        // Build image gallery navigation
+        const imageNavigation = product.images.length > 1 
+            ? `<div class="image-navigation">
+                <button class="nav-btn prev-btn" onclick="changeProductImage(${product.id}, -1)">‹</button>
+                <button class="nav-btn next-btn" onclick="changeProductImage(${product.id}, 1)">›</button>
+                <div class="image-dots">
+                    ${product.images.map((_, i) => 
+                        `<span class="dot ${i === 0 ? 'active' : ''}" onclick="setProductImage(${product.id}, ${i})"></span>`
+                    ).join('')}
+                </div>
+            </div>`
+            : '';
+        
         productCard.innerHTML = `
-            <div class="product-image-container">
-                <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+            <div class="product-image-container" id="product-${product.id}">
+                <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy" id="img-${product.id}">
+                ${product.availableColors > 1 ? `<span class="variant-badge">${product.availableColors} Colors</span>` : ''}
+                ${imageNavigation}
             </div>
             <div class="product-info">
                 <div class="product-category">${product.category === 'bedsheets' ? 'Bedsheets' : 'Suits & Kurtis'}</div>
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
+                ${product.availableColors > 1 ? `
+                    <div class="color-options">
+                        <span class="available-label">Available in:</span>
+                        ${colorBadges}${moreColors}
+                    </div>
+                ` : ''}
                 <div class="product-footer">
                     <span class="product-price">₹${product.price}</span>
                     <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
@@ -206,6 +243,40 @@ function loadProducts(category = 'all') {
         
         productsGrid.appendChild(productCard);
     });
+}
+
+// Change Product Image (Gallery Navigation)
+function changeProductImage(productId, direction) {
+    const product = products.find(p => p.id === productId);
+    if (!product || product.images.length <= 1) return;
+    
+    currentImageIndex[productId] = (currentImageIndex[productId] + direction + product.images.length) % product.images.length;
+    updateProductImage(productId);
+}
+
+// Set Product Image (Dot Navigation)
+function setProductImage(productId, index) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    currentImageIndex[productId] = index;
+    updateProductImage(productId);
+}
+
+// Update Product Image Display
+function updateProductImage(productId) {
+    const product = products.find(p => p.id === productId);
+    const imgElement = document.getElementById(`img-${productId}`);
+    const dots = document.querySelectorAll(`#product-${productId} .dot`);
+    
+    if (imgElement && product) {
+        imgElement.src = product.images[currentImageIndex[productId]];
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentImageIndex[productId]);
+        });
+    }
 }
 
 // Setup Event Listeners
@@ -257,7 +328,8 @@ function addToCart(productId) {
     } else {
         cart.push({
             ...product,
-            quantity: 1
+            quantity: 1,
+            selectedImage: product.images[currentImageIndex[productId] || 0]
         });
     }
     
@@ -281,15 +353,12 @@ function updateCart() {
     const cartCount = document.getElementById('cartCount');
     const totalAmount = document.getElementById('totalAmount');
     
-    // Update count
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalItems;
     
-    // Update total
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     totalAmount.textContent = `₹${total}`;
     
-    // Update items
     if (cart.length === 0) {
         cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
         document.getElementById('checkoutBtn').disabled = true;
@@ -298,7 +367,7 @@ function updateCart() {
         cartItems.innerHTML = cart.map(item => `
             <div class="cart-item">
                 <div class="cart-item-image">
-                    <img src="${item.image}" alt="${item.name}">
+                    <img src="${item.selectedImage || item.images[0]}" alt="${item.name}">
                 </div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${item.name}</div>
@@ -377,7 +446,6 @@ function closeCheckout() {
 function handleCheckout(e) {
     e.preventDefault();
     
-    // Get form data
     const formData = new FormData(e.target);
     const customerName = formData.get('customerName');
     const customerPhone = formData.get('customerPhone');
@@ -387,7 +455,6 @@ function handleCheckout(e) {
     const customerPincode = formData.get('customerPincode');
     const orderNotes = formData.get('orderNotes');
     
-    // Build order details
     let orderDetails = `*NEW ORDER - VASTRA SHAILII* 🛍️\n\n`;
     orderDetails += `👤 *Customer Details:*\n`;
     orderDetails += `Name: ${customerName}\n`;
@@ -413,16 +480,11 @@ function handleCheckout(e) {
     
     orderDetails += `\n---\n🕐 Order placed on ${new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}`;
     
-    // Your WhatsApp business number
-    const whatsappNumber = '919887259471'; // Your number: 098872 59471
-    
-    // Create WhatsApp URL
+    const whatsappNumber = '919887259471';
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
     
-    // Open WhatsApp
     window.open(whatsappURL, '_blank');
     
-    // Clear cart and close modal
     setTimeout(() => {
         cart = [];
         updateCart();
@@ -430,10 +492,7 @@ function handleCheckout(e) {
         closeCheckout();
         closeCart();
         
-        // Show success message
         alert('✅ Order details sent to WhatsApp! We will confirm your order shortly. Thank you for shopping with Vastra Shailii!');
-        
-        // Reset form
         e.target.reset();
     }, 500);
 }
@@ -453,7 +512,6 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe elements when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.product-card, .about-content, .footer-section');
     elements.forEach(el => {
