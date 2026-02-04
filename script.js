@@ -5,7 +5,7 @@ const products = [
         id: 1,
         name: "Jaipuri Leaf Print Bedsheet",
         category: "bedsheets",
-        price: 1299,
+        price: 369,
         description: "Beautiful block print with traditional leaf motifs, 100% cotton, double bed with 2 pillow covers",
         images: [
             "images/bedsheet-leaf-print.jpg"
@@ -17,7 +17,7 @@ const products = [
         id: 2,
         name: "Sanganeri Geometric Bedsheet",
         category: "bedsheets",
-        price: 1399,
+        price: 599,
         description: "Stunning geometric patterns with floral borders, premium cotton, includes pillow covers",
         images: [
             "images/bedsheet-geometric-gold.jpg"
@@ -29,7 +29,7 @@ const products = [
         id: 3,
         name: "Peacock & Bird Motif Bedsheet",
         category: "bedsheets",
-        price: 1499,
+        price: 599,
         description: "Elegant peacock and bird motifs, double bed, soft cotton fabric",
         images: [
             "images/bedsheet-peacock-blue.jpg"
@@ -41,19 +41,19 @@ const products = [
         id: 4,
         name: "Paisley Print Bedsheet",
         category: "bedsheets",
-        price: 1199,
+        price: 599,
         description: "Contemporary paisley design, breathable cotton, king size",
         images: [
             "images/bedsheet-paisley-swirl.jpg"
         ],
-        colors: ["Green", "Pink", "Beige"],
-        availableColors: 3
+        //colors: ["Green", "Pink", "Beige"],
+        availableColors: 4
     },
     {
         id: 5,
         name: "Elephant & Peacock Bedsheet",
         category: "bedsheets",
-        price: 1599,
+        price: 599,
         description: "Traditional Rajasthani elephant and peacock motifs, vibrant colors, 2 pillow covers",
         images: [
             "images/bedsheet-elephant-blue-green.jpg",
@@ -66,7 +66,7 @@ const products = [
         id: 6,
         name: "Floral Border Bedsheet",
         category: "bedsheets",
-        price: 1299,
+        price: 599,
         description: "Beautiful floral patterns with decorative borders, single bed size",
         images: [
             "images/bedsheet-floral-trio.jpg"
@@ -78,7 +78,7 @@ const products = [
         id: 7,
         name: "Mandala Design Bedsheet",
         category: "bedsheets",
-        price: 1699,
+        price: 599,
         description: "Intricate mandala designs, premium quality cotton",
         images: [
             "images/bedsheet-mandala-collection.jpg",
@@ -89,28 +89,29 @@ const products = [
     },
     {
         id: 8,
-        name: "Ajrak Geometric Print Bedsheet",
+        name: "Mandala Print Bedsheet",
         category: "bedsheets",
-        price: 1599,
+        price: 649,
         description: "Traditional Ajrak geometric patterns, natural dyes, king size",
         images: [
             "images/bedsheet-red-geometric.jpg",
-            "images/bedsheet-blue-elephant.jpg",
-            "images/bedsheet-orange-geometric.jpg"
+			"images/bedsheet-orange-geometric.jpg",
+          "images/bedsheet-blue-elephant.jpg",
+            "images/bedsheet-blue-mandala.jpg"
         ],
         colors: ["Red", "Blue", "Orange"],
-        availableColors: 3
+        availableColors: 4
     },
     {
         id: 9,
         name: "Warli Tribal Art Bedsheet",
         category: "bedsheets",
-        price: 1799,
+        price: 369,
         description: "Authentic Warli tribal art design, unique cultural motifs, double bed",
         images: [
             "images/bedsheet-warli-art.jpg"
         ],
-        colors: ["Blue & White", "Black & White"],
+        //colors: ["Blue & White", "Black & White"],
         availableColors: 2
     },
     
@@ -119,52 +120,63 @@ const products = [
         id: 14,
         name: "Floral Print Cotton Kurti",
         category: "suits",
-        price: 699,
+        price: 499,
         description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
         images: [
             "images/kurti-yellow-floral.jpg",
-            "images/kurti-blue-floral.jpg",
-            "images/kurti-aqua-floral.jpg"
+          //  "images/kurti-blue-floral.jpg",
+           // "images/kurti-aqua-floral.jpg"
         ],
-        colors: ["Yellow", "Navy Blue", "Aqua Blue"],
-        availableColors: 3
+        //colors: ["Yellow", "Navy Blue", "Aqua Blue"],
+        //availableColors: 3
     },
     {
         id: 15,
         name: "Paisley Print Cotton Kurti",
         category: "suits",
-        price: 799,
+        price: 499,
         description: "Elegant paisley print, breathable cotton fabric, perfect for office wear",
         images: [
             "images/kurti-grey-paisley.jpg"
         ],
-        colors: ["Grey", "Blue", "Beige"],
-        availableColors: 3
+        //colors: ["Grey", "Blue", "Beige"],
+        //availableColors: 3
     },
     {
         id: 18,
         name: "Embroidered Cotton Suit Set",
         category: "suits",
-        price: 2299,
+        price: 1299,
         description: "Elegant embroidered suit with beautiful work, includes kurta and dupatta",
         images: [
             "images/suit-sky-blue-embroidered.jpg",
+        ],
+        //colors: ["Sky Blue", "Pink", "Mint Green"],
+        //availableColors: 3
+    },
+	{
+        id: 19,
+        name: "Anarkali Suit",
+        category: "suits",
+        price: 1299,
+        description: "Beautiful Anarkali suit with floral print on Neck & hand & dupatta, Cotton Size: L,XL,XXL,XXXL",
+        images: [
             "images/suit-pink-embroidered.jpg"
         ],
-        colors: ["Sky Blue", "Pink", "Mint Green"],
-        availableColors: 3
+       // colors: ["Turquoise", "Pink", "Yellow"],
+       availableColors: 2
     },
     {
         id: 20,
         name: "Palazzo Suit Set",
         category: "suits",
-        price: 2199,
+        price: 1599,
         description: "Beautiful palazzo suit with floral print, includes kurta, palazzo & dupatta",
         images: [
             "images/suit-turquoise-palazzo.jpg"
         ],
-        colors: ["Turquoise", "Pink", "Yellow"],
-        availableColors: 3
+       // colors: ["Turquoise", "Pink", "Yellow"],
+       // availableColors: 1
     }
 ];
 
