@@ -318,18 +318,34 @@ function setupEventListeners() {
     });
 }
 
-// Add to Cart
+// Add to Cart - Handles color variants separately
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    const existingItem = cart.find(item => item.id === productId);
+    const selectedImageIndex = currentImageIndex[productId] || 0;
+    const selectedImage = product.images[selectedImageIndex];
+    
+    // Determine color variant name
+    let selectedColor = 'Default';
+    if (product.colors && product.colors[selectedImageIndex]) {
+        selectedColor = product.colors[selectedImageIndex];
+    }
+    
+    // Check if this exact variant (product + color) already exists in cart
+    const existingItem = cart.find(item => 
+        item.id === productId && item.selectedImage === selectedImage
+    );
     
     if (existingItem) {
+        // Same product, same color → increase quantity
         existingItem.quantity += 1;
     } else {
+        // Same product, different color → add as new item
         cart.push({
             ...product,
             quantity: 1,
-            selectedImage: product.images[currentImageIndex[productId] || 0]
+            selectedImage: selectedImage,
+            selectedColor: selectedColor,
+            cartItemId: `${productId}-${selectedImageIndex}` // Unique ID for this variant
         });
     }
     
@@ -339,12 +355,12 @@ function addToCart(productId) {
     // Show feedback
     const btn = event.target;
     const originalText = btn.textContent;
-    btn.textContent = 'Added ✓';
+    btn.textContent = `Added ${selectedColor} ✓`;
     btn.style.background = '#25D366';
     setTimeout(() => {
         btn.textContent = originalText;
         btn.style.background = '';
-    }, 1500);
+    }, 2000);
 }
 
 // Update Cart Display
@@ -371,26 +387,29 @@ function updateCart() {
                 </div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${item.name}</div>
+                    ${item.selectedColor && item.selectedColor !== 'Default' 
+                        ? `<div class="cart-item-color">Color: ${item.selectedColor}</div>` 
+                        : ''}
                     <div class="cart-item-price">₹${item.price}</div>
                     <div class="cart-item-quantity">
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', -1)">-</button>
                         <span>${item.quantity}</span>
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', 1)">+</button>
                     </div>
                 </div>
-                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
+                <button class="remove-item" onclick="removeFromCart('${item.cartItemId}')">×</button>
             </div>
         `).join('');
     }
 }
 
-// Update Quantity
-function updateQuantity(productId, change) {
-    const item = cart.find(i => i.id === productId);
+// Update Quantity - Works with unique cart item IDs
+function updateQuantity(cartItemId, change) {
+    const item = cart.find(i => i.cartItemId === cartItemId);
     if (item) {
         item.quantity += change;
         if (item.quantity <= 0) {
-            removeFromCart(productId);
+            removeFromCart(cartItemId);
         } else {
             updateCart();
             saveCartToStorage();
@@ -398,9 +417,9 @@ function updateQuantity(productId, change) {
     }
 }
 
-// Remove from Cart
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
+// Remove from Cart - Works with unique cart item IDs
+function removeFromCart(cartItemId) {
+    cart = cart.filter(item => item.cartItemId !== cartItemId);
     updateCart();
     saveCartToStorage();
 }
@@ -442,7 +461,32 @@ function closeCheckout() {
     document.body.style.overflow = '';
 }
 
-// Handle Checkout - Send to WhatsApp
+// Open/Close Policy Modals
+function openPolicyModal(modalId) {
+    document.getElementById(modalId).classList.add('active');
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePolicyModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close modal when clicking overlay
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('modalOverlay').addEventListener('click', function() {
+        // Close all modals
+        document.querySelectorAll('.modal.active').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        this.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Handle Checkout - Send to WhatsApp with color details
 function handleCheckout(e) {
     e.preventDefault();
     
@@ -467,6 +511,9 @@ function handleCheckout(e) {
     orderDetails += `\n🛍️ *Order Items:*\n`;
     cart.forEach(item => {
         orderDetails += `\n📦 ${item.name}\n`;
+        if (item.selectedColor && item.selectedColor !== 'Default') {
+            orderDetails += `   🎨 Color: ${item.selectedColor}\n`;
+        }
         orderDetails += `   Quantity: ${item.quantity}\n`;
         orderDetails += `   Price: ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
     });

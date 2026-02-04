@@ -666,6 +666,14 @@ body {
     margin-bottom: 0.25rem;
 }
 
+.cart-item-color {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    font-style: italic;
+}
+
 .cart-item-price {
     color: var(--accent);
     font-weight: 600;
@@ -902,10 +910,64 @@ body {
     display: block;
     margin-bottom: 0.5rem;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .footer-section a:hover {
     color: var(--secondary);
+}
+
+/* Policy Modals */
+.policy-modal .modal-content {
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.policy-content {
+    padding: var(--spacing-md);
+    line-height: 1.8;
+}
+
+.policy-content h3 {
+    font-family: var(--font-display);
+    color: var(--primary);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.3rem;
+}
+
+.policy-content h3:first-child {
+    margin-top: 0;
+}
+
+.policy-content p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+}
+
+.policy-content ul,
+.policy-content ol {
+    margin-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-dark);
+}
+
+.policy-content li {
+    margin-bottom: 0.5rem;
+}
+
+.policy-content strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.policy-date {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-light);
 }
 
 .social-links {
