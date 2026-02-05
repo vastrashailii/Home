@@ -297,6 +297,34 @@ function closeCheckout() {
     document.body.style.overflow = '';
 }
 
+// Open/Close Policy Modals
+function openPolicyModal(modalId) {
+    document.getElementById(modalId).classList.add('active');
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePolicyModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close modal when clicking overlay
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('modalOverlay');
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            // Close all modals
+            document.querySelectorAll('.modal.active').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+});
+
 // Handle Checkout - Send to WhatsApp with color details
 function handleCheckout(e) {
     e.preventDefault();
