@@ -139,6 +139,19 @@ const products = [
         colors: ["Blue & White", "Black & White"],
         availableColors: 2
     },
+
+    {
+        id: 10,
+        name: "Jaipuri Single Bedsheet",
+        category: "bedsheets",
+        price: 350,
+        description: "Authentic Warli tribal art design, unique cultural motifs, double bed",
+        images: [
+            "images/bedsheet-warli-art.jpg"
+        ],
+        colors: ["Pink & White", "Yellow & Brown"],
+        availableColors: 2
+    },
     
     // ═══════════════════════════════════════════════════════════
     // KURTIS & SUITS SECTION
