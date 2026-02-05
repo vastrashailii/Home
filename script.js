@@ -1,172 +1,12 @@
-// Product Database - Updated with Real Vastra Shailii Products
-const products = [
-    // Bedsheets Collection
-    {
-        id: 1,
-        name: "Jaipuri Leaf Print Bedsheet",
-        category: "bedsheets",
-        price: 1299,
-        description: "Beautiful block print with traditional leaf motifs, 100% cotton, double bed with 2 pillow covers",
-        image: "images/bedsheet-leaf-print.jpg"
-    },
-    {
-        id: 2,
-        name: "Sanganeri Geometric Gold Bedsheet",
-        category: "bedsheets",
-        price: 1399,
-        description: "Stunning geometric patterns with floral borders, premium cotton, includes pillow covers",
-        image: "images/bedsheet-geometric-gold.jpg"
-    },
-    {
-        id: 3,
-        name: "Peacock Blue Cotton Bedsheet",
-        category: "bedsheets",
-        price: 1499,
-        description: "Elegant peacock and bird motifs in blue tones, double bed, soft cotton fabric",
-        image: "images/bedsheet-peacock-blue.jpg"
-    },
-    {
-        id: 4,
-        name: "Paisley Swirl Print Bedsheet",
-        category: "bedsheets",
-        price: 1199,
-        description: "Contemporary paisley design in multiple colors, breathable cotton, king size",
-        image: "images/bedsheet-paisley-swirl.jpg"
-    },
-    {
-        id: 5,
-        name: "Elephant Print Bedsheet - Blue & Green",
-        category: "bedsheets",
-        price: 1599,
-        description: "Traditional Rajasthani elephant and peacock motifs, vibrant colors, 2 pillow covers",
-        image: "images/bedsheet-elephant-blue-green.jpg"
-    },
-    {
-        id: 6,
-        name: "Floral Trio Bedsheet Set",
-        category: "bedsheets",
-        price: 1299,
-        description: "Three beautiful floral patterns, perfect for mix and match, single bed size",
-        image: "images/bedsheet-floral-trio.jpg"
-    },
-    {
-        id: 7,
-        name: "Mandala Collection Bedsheet",
-        category: "bedsheets",
-        price: 1699,
-        description: "Intricate mandala designs in multiple color combinations, premium quality cotton",
-        image: "images/bedsheet-mandala-collection.jpg"
-    },
-    {
-        id: 8,
-        name: "Elephant & Paisley Bedsheet",
-        category: "bedsheets",
-        price: 1399,
-        description: "Classic Barmeri print with elephants and paisley motifs, brown tones, double bed",
-        image: "images/bedsheet-elephant-brown.jpg"
-    },
-    {
-        id: 9,
-        name: "Blue Mandala Premium Bedsheet",
-        category: "bedsheets",
-        price: 1799,
-        description: "Rich blue mandala pattern with elephant border, colorfast dyes, luxury cotton",
-        image: "images/bedsheet-blue-mandala.jpg"
-    },
-    {
-        id: 10,
-        name: "Red Geometric Ajrak Bedsheet",
-        category: "bedsheets",
-        price: 1599,
-        description: "Traditional Ajrak geometric patterns in red and yellow, natural dyes, king size",
-        image: "images/bedsheet-red-geometric.jpg"
-    },
-    {
-        id: 11,
-        name: "Blue Elephant Ethnic Bedsheet",
-        category: "bedsheets",
-        price: 1699,
-        description: "Royal blue with decorative elephant and peacock motifs, premium block print",
-        image: "images/bedsheet-blue-elephant.jpg"
-    },
-    {
-        id: 12,
-        name: "Orange Geometric Bedsheet",
-        category: "bedsheets",
-        price: 1499,
-        description: "Vibrant orange with traditional geometric patterns, soft cotton, includes pillow covers",
-        image: "images/bedsheet-orange-geometric.jpg"
-    },
-    {
-        id: 13,
-        name: "Warli Art Bedsheet",
-        category: "bedsheets",
-        price: 1799,
-        description: "Authentic Warli tribal art design in blue and white, unique cultural motifs, double bed",
-        image: "images/bedsheet-warli-art.jpg"
-    },
-    
-    // Kurtis & Suits Collection
-    {
-        id: 14,
-        name: "Yellow Floral Cotton Kurti",
-        category: "suits",
-        price: 699,
-        description: "Beautiful yellow floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
-        image: "images/kurti-yellow-floral.jpg"
-    },
-    {
-        id: 15,
-        name: "Grey Paisley Cotton Kurti",
-        category: "suits",
-        price: 799,
-        description: "Elegant grey paisley print, breathable cotton fabric, perfect for office wear",
-        image: "images/kurti-grey-paisley.jpg"
-    },
-    {
-        id: 16,
-        name: "Blue Floral Print Kurti",
-        category: "suits",
-        price: 899,
-        description: "Navy blue with intricate floral patterns, button detail, straight cut, all sizes",
-        image: "images/kurti-blue-floral.jpg"
-    },
-    {
-        id: 17,
-        name: "Aqua Floral Cotton Kurti",
-        category: "suits",
-        price: 849,
-        description: "Fresh aqua blue with grey floral print, comfortable daily wear, premium cotton",
-        image: "images/kurti-aqua-floral.jpg"
-    },
-    {
-        id: 18,
-        name: "Sky Blue Embroidered Suit",
-        category: "suits",
-        price: 2299,
-        description: "Elegant sky blue suit with beautiful embroidery, includes kurta and dupatta, special occasions",
-        image: "images/suit-sky-blue-embroidered.jpg"
-    },
-    {
-        id: 19,
-        name: "Pink Embroidered Suit Set",
-        category: "suits",
-        price: 2499,
-        description: "Vibrant pink suit with traditional embroidery, 3-piece set with dupatta, festive wear",
-        image: "images/suit-pink-embroidered.jpg"
-    },
-    {
-        id: 20,
-        name: "Turquoise Palazzo Suit",
-        category: "suits",
-        price: 2199,
-        description: "Beautiful turquoise palazzo suit with floral print, includes kurta, palazzo & dupatta",
-        image: "images/suit-turquoise-palazzo.jpg"
-    }
-];
+// ═══════════════════════════════════════════════════════════════
+// VASTRA SHAILII - MAIN SCRIPT
+// ═══════════════════════════════════════════════════════════════
+// Products are managed in: products-data.js
+// ═══════════════════════════════════════════════════════════════
 
 // Shopping Cart
 let cart = [];
+let currentImageIndex = {};
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
@@ -175,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCartFromStorage();
 });
 
-// Load Products
+// Load Products with Image Gallery
 function loadProducts(category = 'all') {
     const productsGrid = document.getElementById('productsGrid');
     productsGrid.innerHTML = '';
@@ -189,14 +29,47 @@ function loadProducts(category = 'all') {
         productCard.className = 'product-card';
         productCard.style.animationDelay = `${index * 0.1}s`;
         
+        // Initialize current image index
+        currentImageIndex[product.id] = 0;
+        
+        // Build color badges
+        const colorBadges = product.colors.slice(0, 3).map(color => 
+            `<span class="color-badge">${color}</span>`
+        ).join('');
+        
+        const moreColors = product.availableColors > 3 
+            ? `<span class="color-badge">+${product.availableColors - 3} more</span>` 
+            : '';
+        
+        // Build image gallery navigation
+        const imageNavigation = product.images.length > 1 
+            ? `<div class="image-navigation">
+                <button class="nav-btn prev-btn" onclick="changeProductImage(${product.id}, -1)">‹</button>
+                <button class="nav-btn next-btn" onclick="changeProductImage(${product.id}, 1)">›</button>
+                <div class="image-dots">
+                    ${product.images.map((_, i) => 
+                        `<span class="dot ${i === 0 ? 'active' : ''}" onclick="setProductImage(${product.id}, ${i})"></span>`
+                    ).join('')}
+                </div>
+            </div>`
+            : '';
+        
         productCard.innerHTML = `
-            <div class="product-image-container">
-                <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+            <div class="product-image-container" id="product-${product.id}">
+                <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy" id="img-${product.id}">
+                ${product.availableColors > 1 ? `<span class="variant-badge">${product.availableColors} Colors</span>` : ''}
+                ${imageNavigation}
             </div>
             <div class="product-info">
                 <div class="product-category">${product.category === 'bedsheets' ? 'Bedsheets' : 'Suits & Kurtis'}</div>
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
+                ${product.availableColors > 1 ? `
+                    <div class="color-options">
+                        <span class="available-label">Available in:</span>
+                        ${colorBadges}${moreColors}
+                    </div>
+                ` : ''}
                 <div class="product-footer">
                     <span class="product-price">₹${product.price}</span>
                     <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
@@ -206,6 +79,40 @@ function loadProducts(category = 'all') {
         
         productsGrid.appendChild(productCard);
     });
+}
+
+// Change Product Image (Gallery Navigation)
+function changeProductImage(productId, direction) {
+    const product = products.find(p => p.id === productId);
+    if (!product || product.images.length <= 1) return;
+    
+    currentImageIndex[productId] = (currentImageIndex[productId] + direction + product.images.length) % product.images.length;
+    updateProductImage(productId);
+}
+
+// Set Product Image (Dot Navigation)
+function setProductImage(productId, index) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    currentImageIndex[productId] = index;
+    updateProductImage(productId);
+}
+
+// Update Product Image Display
+function updateProductImage(productId) {
+    const product = products.find(p => p.id === productId);
+    const imgElement = document.getElementById(`img-${productId}`);
+    const dots = document.querySelectorAll(`#product-${productId} .dot`);
+    
+    if (imgElement && product) {
+        imgElement.src = product.images[currentImageIndex[productId]];
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentImageIndex[productId]);
+        });
+    }
 }
 
 // Setup Event Listeners
@@ -247,17 +154,34 @@ function setupEventListeners() {
     });
 }
 
-// Add to Cart
+// Add to Cart - Handles color variants separately
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    const existingItem = cart.find(item => item.id === productId);
+    const selectedImageIndex = currentImageIndex[productId] || 0;
+    const selectedImage = product.images[selectedImageIndex];
+    
+    // Determine color variant name
+    let selectedColor = 'Default';
+    if (product.colors && product.colors[selectedImageIndex]) {
+        selectedColor = product.colors[selectedImageIndex];
+    }
+    
+    // Check if this exact variant (product + color) already exists in cart
+    const existingItem = cart.find(item => 
+        item.id === productId && item.selectedImage === selectedImage
+    );
     
     if (existingItem) {
+        // Same product, same color → increase quantity
         existingItem.quantity += 1;
     } else {
+        // Same product, different color → add as new item
         cart.push({
             ...product,
-            quantity: 1
+            quantity: 1,
+            selectedImage: selectedImage,
+            selectedColor: selectedColor,
+            cartItemId: `${productId}-${selectedImageIndex}` // Unique ID for this variant
         });
     }
     
@@ -267,12 +191,12 @@ function addToCart(productId) {
     // Show feedback
     const btn = event.target;
     const originalText = btn.textContent;
-    btn.textContent = 'Added ✓';
+    btn.textContent = `Added ${selectedColor} ✓`;
     btn.style.background = '#25D366';
     setTimeout(() => {
         btn.textContent = originalText;
         btn.style.background = '';
-    }, 1500);
+    }, 2000);
 }
 
 // Update Cart Display
@@ -281,15 +205,12 @@ function updateCart() {
     const cartCount = document.getElementById('cartCount');
     const totalAmount = document.getElementById('totalAmount');
     
-    // Update count
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalItems;
     
-    // Update total
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     totalAmount.textContent = `₹${total}`;
     
-    // Update items
     if (cart.length === 0) {
         cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
         document.getElementById('checkoutBtn').disabled = true;
@@ -298,30 +219,33 @@ function updateCart() {
         cartItems.innerHTML = cart.map(item => `
             <div class="cart-item">
                 <div class="cart-item-image">
-                    <img src="${item.image}" alt="${item.name}">
+                    <img src="${item.selectedImage || item.images[0]}" alt="${item.name}">
                 </div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${item.name}</div>
+                    ${item.selectedColor && item.selectedColor !== 'Default' 
+                        ? `<div class="cart-item-color">Color: ${item.selectedColor}</div>` 
+                        : ''}
                     <div class="cart-item-price">₹${item.price}</div>
                     <div class="cart-item-quantity">
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', -1)">-</button>
                         <span>${item.quantity}</span>
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        <button class="qty-btn" onclick="updateQuantity('${item.cartItemId}', 1)">+</button>
                     </div>
                 </div>
-                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
+                <button class="remove-item" onclick="removeFromCart('${item.cartItemId}')">×</button>
             </div>
         `).join('');
     }
 }
 
-// Update Quantity
-function updateQuantity(productId, change) {
-    const item = cart.find(i => i.id === productId);
+// Update Quantity - Works with unique cart item IDs
+function updateQuantity(cartItemId, change) {
+    const item = cart.find(i => i.cartItemId === cartItemId);
     if (item) {
         item.quantity += change;
         if (item.quantity <= 0) {
-            removeFromCart(productId);
+            removeFromCart(cartItemId);
         } else {
             updateCart();
             saveCartToStorage();
@@ -329,9 +253,9 @@ function updateQuantity(productId, change) {
     }
 }
 
-// Remove from Cart
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
+// Remove from Cart - Works with unique cart item IDs
+function removeFromCart(cartItemId) {
+    cart = cart.filter(item => item.cartItemId !== cartItemId);
     updateCart();
     saveCartToStorage();
 }
@@ -373,11 +297,10 @@ function closeCheckout() {
     document.body.style.overflow = '';
 }
 
-// Handle Checkout - Send to WhatsApp
+// Handle Checkout - Send to WhatsApp with color details
 function handleCheckout(e) {
     e.preventDefault();
     
-    // Get form data
     const formData = new FormData(e.target);
     const customerName = formData.get('customerName');
     const customerPhone = formData.get('customerPhone');
@@ -387,7 +310,6 @@ function handleCheckout(e) {
     const customerPincode = formData.get('customerPincode');
     const orderNotes = formData.get('orderNotes');
     
-    // Build order details
     let orderDetails = `*NEW ORDER - VASTRA SHAILII* 🛍️\n\n`;
     orderDetails += `👤 *Customer Details:*\n`;
     orderDetails += `Name: ${customerName}\n`;
@@ -400,6 +322,9 @@ function handleCheckout(e) {
     orderDetails += `\n🛍️ *Order Items:*\n`;
     cart.forEach(item => {
         orderDetails += `\n📦 ${item.name}\n`;
+        if (item.selectedColor && item.selectedColor !== 'Default') {
+            orderDetails += `   🎨 Color: ${item.selectedColor}\n`;
+        }
         orderDetails += `   Quantity: ${item.quantity}\n`;
         orderDetails += `   Price: ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
     });
@@ -413,16 +338,11 @@ function handleCheckout(e) {
     
     orderDetails += `\n---\n🕐 Order placed on ${new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}`;
     
-    // Your WhatsApp business number
-    const whatsappNumber = '919887259471'; // Your number: 098872 59471
-    
-    // Create WhatsApp URL
+    const whatsappNumber = '919887259471';
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
     
-    // Open WhatsApp
     window.open(whatsappURL, '_blank');
     
-    // Clear cart and close modal
     setTimeout(() => {
         cart = [];
         updateCart();
@@ -430,10 +350,7 @@ function handleCheckout(e) {
         closeCheckout();
         closeCart();
         
-        // Show success message
         alert('✅ Order details sent to WhatsApp! We will confirm your order shortly. Thank you for shopping with Vastra Shailii!');
-        
-        // Reset form
         e.target.reset();
     }, 500);
 }
@@ -453,7 +370,6 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe elements when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.product-card, .about-content, .footer-section');
     elements.forEach(el => {
