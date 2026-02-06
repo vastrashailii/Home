@@ -158,58 +158,95 @@ const products = [
     // ═══════════════════════════════════════════════════════════
     
     {
-        id: 14,
+        id: 13,
         name: "Floral Print Cotton Kurti",
         category: "suits",
         price: 699,
         description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
         images: [
             "images/kurti-yellow-floral.jpg",
-            "images/kurti-blue-floral.jpg",
+        ],
+        colors: ["Yellow"],
+     //   availableColors: 3
+    },
+
+    {
+        id: 14,
+        name: "Floral Print Cotton Kurti",
+        category: "suits",
+        price: 350,
+        description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
+        images: [
             "images/kurti-aqua-floral.jpg"
         ],
-        colors: ["Yellow", "Navy Blue", "Aqua Blue"],
-        availableColors: 3
+        colors: ["Aqua Blue"],
+        // availableColors: 3
     },
+
     
     {
         id: 15,
+        name: "Floral Print Cotton Kurti",
+        category: "suits",
+        price: 350,
+        description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes",
+        images: [
+            "images/kurti-blue-floral.jpg",
+        ],
+        colors: ["Navy Blue"],
+        // availableColors: 3
+    },
+    
+    {
+        id: 17,
         name: "Paisley Print Cotton Kurti",
         category: "suits",
-        price: 799,
+        price: 350,
         description: "Elegant paisley print, breathable cotton fabric, perfect for office wear",
         images: [
             "images/kurti-grey-paisley.jpg"
         ],
-        colors: ["Grey", "Blue", "Beige"],
-        availableColors: 3
+        colors: ["Grey"],
+        // availableColors: 3
     },
     
     {
         id: 18,
         name: "Embroidered Cotton Suit Set",
         category: "suits",
-        price: 2299,
+        price: 1699,
         description: "Elegant embroidered suit with beautiful work, includes kurta and dupatta",
         images: [
             "images/suit-sky-blue-embroidered.jpg",
-            "images/suit-pink-embroidered.jpg"
         ],
-        colors: ["Sky Blue", "Pink", "Mint Green"],
-        availableColors: 3
+        colors: ["Sky Blue"],
+        // availableColors: 3
     },
-    
+
+    {
+        id: 19,
+        name: "Cotton Suit Set",
+        category: "suits",
+        price: 1399,
+        description: "Elegant embroidered suit with beautiful work, includes kurta and dupatta",
+        images: [
+             "images/suit-pink-embroidered.jpg"
+        ],
+        colors: ["Pink", "Mehendi"],
+        availableColors: 2
+    },
+
     {
         id: 20,
         name: "Palazzo Suit Set",
         category: "suits",
-        price: 2199,
+        price: 1499,
         description: "Beautiful palazzo suit with floral print, includes kurta, palazzo & dupatta",
         images: [
             "images/suit-turquoise-palazzo.jpg"
         ],
-        colors: ["Turquoise", "Pink", "Yellow"],
-        availableColors: 3
+        color: ["Turquoise"],
+        // availableColors: 3
     }
     
     // ═══════════════════════════════════════════════════════════
