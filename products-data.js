@@ -100,16 +100,18 @@ const products = [
     
     {
         id: 7,
-        name: "Mandala Design Bedsheet",
+        name: "Mandala Design Double Bedsheet",
         category: "bedsheets",
         price: 1699,
-        description: "Intricate mandala designs, premium quality cotton",
+        description: "Intricate mandala designs, premium quality cotton Size 93*108 | 2 Pillow Covers | Hand & Machine Washable ",
         images: [
-            "images/bedsheet-mandala-collection.jpg",
-            "images/bedsheet-blue-mandala.jpg"
+            "images/bedsheet-mandala1.jpg",
+            "images/bedsheet-mandala2.jpg",
+            "images/bedsheet-mandala3.jpg",
+            "images/bedsheet-mandala4.jpg"
         ],
-        colors: ["Multicolor", "Blue", "Red", "Green"],
-        availableColors: 4
+        colors: ["Multi-design", "Blue", "Red", "Orange"],
+        availableColors: 3
     },
     
     {
