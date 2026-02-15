@@ -326,6 +326,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Handle Checkout - Send to WhatsApp with color details
+let whatsappUrl = '';
+
 function handleCheckout(e) {
     e.preventDefault();
     
@@ -336,7 +338,18 @@ function handleCheckout(e) {
     const customerAddress = formData.get('customerAddress');
     const customerCity = formData.get('customerCity');
     const customerPincode = formData.get('customerPincode');
+    const paymentMethod = formData.get('paymentMethod');
     const orderNotes = formData.get('orderNotes');
+    
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Calculate COD charges
+    let codCharges = 0;
+    let finalTotal = total;
+    if (paymentMethod === 'cod' && total < 2000) {
+        codCharges = 50;
+        finalTotal = total + codCharges;
+    }
     
     let orderDetails = `*NEW ORDER - VASTRA SHAILII* 🛍️\n\n`;
     orderDetails += `👤 *Customer Details:*\n`;
@@ -357,8 +370,24 @@ function handleCheckout(e) {
         orderDetails += `   Price: ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
     });
     
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    orderDetails += `\n💰 *Total Amount: ₹${total}*\n`;
+    orderDetails += `\n💰 *Subtotal: ₹${total}*\n`;
+    
+    if (codCharges > 0) {
+        orderDetails += `💵 *COD Charges: ₹${codCharges}*\n`;
+    }
+    
+    orderDetails += `\n💳 *Payment Method:* ${paymentMethod === 'cod' ? 'Cash on Delivery (COD)' : 'Online Payment (UPI)'}\n`;
+    orderDetails += `\n💰 *TOTAL AMOUNT: ₹${finalTotal}*\n`;
+    
+    if (paymentMethod === 'online') {
+        orderDetails += `\n📱 *UPI Payment Details:*\n`;
+        orderDetails += `UPI ID: 9950349005@hdfc\n`;
+        orderDetails += `Account Name: Vastra Shailii\n`;
+        orderDetails += `Amount to Pay: ₹${finalTotal}\n`;
+        orderDetails += `\n✅ After payment, please send screenshot\n`;
+    } else {
+        orderDetails += `\n💵 *Amount to pay on delivery: ₹${finalTotal}*\n`;
+    }
     
     if (orderNotes) {
         orderDetails += `\n📝 *Special Instructions:*\n${orderNotes}\n`;
@@ -367,20 +396,136 @@ function handleCheckout(e) {
     orderDetails += `\n---\n🕐 Order placed on ${new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}`;
     
     const whatsappNumber = '919887259471';
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
+    whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
     
-    window.open(whatsappURL, '_blank');
+    // Show payment modal instead of opening WhatsApp immediately
+    showPaymentModal(paymentMethod, finalTotal, total, codCharges);
     
+    // Clear cart and close checkout
     setTimeout(() => {
         cart = [];
         updateCart();
         saveCartToStorage();
         closeCheckout();
         closeCart();
-        
-        alert('✅ Order details sent to WhatsApp! We will confirm your order shortly. Thank you for shopping with Vastra Shailii!');
         e.target.reset();
     }, 500);
+}
+
+function showPaymentModal(paymentMethod, finalTotal, subtotal, codCharges) {
+    const paymentDetailsDiv = document.getElementById('paymentDetails');
+    const paymentStepLi = document.getElementById('paymentStep');
+    
+    if (paymentMethod === 'online') {
+        paymentDetailsDiv.innerHTML = `
+            <div class="upi-payment-box">
+                <h3>💳 Complete Your Payment</h3>
+                <div class="upi-details">
+                    <div class="upi-item">
+                        <span class="upi-label">UPI ID:</span>
+                        <span class="upi-value">9950349005@hdfc</span>
+                        <button class="copy-btn" onclick="copyUPI()">Copy</button>
+                    </div>
+                    <div class="upi-item">
+                        <span class="upi-label">Account Name:</span>
+                        <span class="upi-value">Vastra Shailii</span>
+                    </div>
+                    <div class="upi-item total">
+                        <span class="upi-label">Amount to Pay:</span>
+                        <span class="upi-value">₹${finalTotal}</span>
+                    </div>
+                </div>
+                <div class="payment-apps">
+                    <p><strong>Pay using:</strong></p>
+                    <div class="app-buttons">
+                        <button class="app-btn" onclick="openUPI('gpay')">Google Pay</button>
+                        <button class="app-btn" onclick="openUPI('phonepe')">PhonePe</button>
+                        <button class="app-btn" onclick="openUPI('paytm')">Paytm</button>
+                    </div>
+                </div>
+                <div class="payment-note">
+                    <p>⚠️ After payment, please send screenshot on WhatsApp for confirmation</p>
+                </div>
+            </div>
+        `;
+        paymentStepLi.textContent = 'Complete payment using UPI and send screenshot on WhatsApp';
+    } else {
+        paymentDetailsDiv.innerHTML = `
+            <div class="cod-payment-box">
+                <h3>💵 Cash on Delivery</h3>
+                <div class="cod-details">
+                    <div class="cod-item">
+                        <span class="cod-label">Product Total:</span>
+                        <span class="cod-value">₹${subtotal}</span>
+                    </div>
+                    ${codCharges > 0 ? `
+                    <div class="cod-item">
+                        <span class="cod-label">COD Charges:</span>
+                        <span class="cod-value">₹${codCharges}</span>
+                    </div>
+                    ` : ''}
+                    <div class="cod-item total">
+                        <span class="cod-label">Amount to Pay on Delivery:</span>
+                        <span class="cod-value">₹${finalTotal}</span>
+                    </div>
+                </div>
+                <div class="cod-note">
+                    <p>✅ Please keep exact cash ready for delivery</p>
+                    <p>💡 We'll confirm your order on WhatsApp shortly</p>
+                </div>
+            </div>
+        `;
+        paymentStepLi.textContent = 'Keep ₹' + finalTotal + ' ready for delivery';
+    }
+    
+    document.getElementById('paymentModal').classList.add('active');
+    document.getElementById('modalOverlay').classList.add('active');
+}
+
+function closePaymentModal() {
+    document.getElementById('paymentModal').classList.remove('active');
+    document.getElementById('modalOverlay').classList.remove('active');
+}
+
+function openWhatsApp() {
+    window.open(whatsappUrl, '_blank');
+    closePaymentModal();
+}
+
+function copyUPI() {
+    const upiId = '9950349005@hdfc';
+    navigator.clipboard.writeText(upiId).then(() => {
+        alert('✅ UPI ID copied! Paste in your payment app.');
+    }).catch(() => {
+        alert('UPI ID: 9950349005@hdfc (Please copy manually)');
+    });
+}
+
+function openUPI(app) {
+    const upiId = '9950349005@hdfc';
+    const amount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const name = 'Vastra Shailii';
+    
+    let upiUrl = '';
+    
+    switch(app) {
+        case 'gpay':
+            upiUrl = `gpay://upi/pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+            break;
+        case 'phonepe':
+            upiUrl = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+            break;
+        case 'paytm':
+            upiUrl = `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+            break;
+    }
+    
+    window.location.href = upiUrl;
+    
+    // Fallback alert if app not installed
+    setTimeout(() => {
+        alert('If the app didn\'t open, please copy UPI ID: 9950349005@hdfc and pay manually.');
+    }, 2000);
 }
 
 // Scroll animations

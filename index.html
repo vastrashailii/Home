@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vastra Shailii - Authentic Jaipuri Prints & Cotton Wear</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Shop authentic Jaipuri, Sanganeri & Barmeri print bedsheets and cotton wear from Jaipur. Traditional craftsmanship meets modern style.">
+    <meta name="theme-color" content="#8B4513">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Vastra Shailii">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- App Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -143,6 +160,15 @@
                 <div class="form-group">
                     <label for="customerPincode">Pincode *</label>
                     <input type="text" id="customerPincode" name="customerPincode" pattern="[0-9]{6}" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method *</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="online">Online Payment (UPI/Google Pay/PhonePe)</option>
+                        <option value="cod">Cash on Delivery (COD)</option>
+                    </select>
+                    <small class="payment-note">COD charges: ₹50 (Free for orders above ₹2,000)</small>
                 </div>
                 <div class="form-group">
                     <label for="orderNotes">Special Instructions (Optional)</label>
@@ -374,6 +400,42 @@
         </div>
     </div>
 
+    <!-- Payment Confirmation Modal -->
+    <div class="modal payment-modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✅ Order Placed Successfully!</h2>
+                <button class="close-modal" onclick="closePaymentModal()">&times;</button>
+            </div>
+            <div class="payment-content">
+                <div class="success-message">
+                    <div class="success-icon">🎉</div>
+                    <h3>Thank you for your order!</h3>
+                    <p>Your order details have been sent to WhatsApp.</p>
+                </div>
+
+                <div class="payment-details" id="paymentDetails">
+                    <!-- Payment details will be inserted here -->
+                </div>
+
+                <div class="next-steps">
+                    <h4>What's Next?</h4>
+                    <ol>
+                        <li id="paymentStep">Complete the payment using the details above</li>
+                        <li>We'll confirm your order on WhatsApp</li>
+                        <li>Your order will be shipped within 24 hours</li>
+                        <li>Track your delivery via WhatsApp updates</li>
+                    </ol>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="primary-btn" onclick="openWhatsApp()">💬 Open WhatsApp</button>
+                    <button class="secondary-btn" onclick="closePaymentModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer" id="contact">
         <div class="container">
@@ -408,5 +470,78 @@
 
     <script src="products-data.js"></script>
     <script src="script.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button or banner
+            showInstallPromotion();
+        });
+
+        function showInstallPromotion() {
+            // Create install banner
+            const installBanner = document.createElement('div');
+            installBanner.id = 'installBanner';
+            installBanner.innerHTML = `
+                <div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
+                            background: #8B4513; color: white; padding: 15px 25px; 
+                            border-radius: 50px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                            z-index: 10000; display: flex; align-items: center; gap: 15px;
+                            font-family: Karla, sans-serif; max-width: 90%; animation: slideUp 0.3s ease;">
+                    <span>📱 Install Vastra Shailii App</span>
+                    <button onclick="installApp()" style="background: white; color: #8B4513; border: none; 
+                            padding: 8px 20px; border-radius: 25px; font-weight: 600; cursor: pointer;">
+                        Install
+                    </button>
+                    <button onclick="dismissInstall()" style="background: transparent; color: white; 
+                            border: 1px solid white; padding: 8px 15px; border-radius: 25px; cursor: pointer;">
+                        Later
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(installBanner);
+        }
+
+        function installApp() {
+            const banner = document.getElementById('installBanner');
+            if (banner) banner.remove();
+            
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User installed the app');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
+        function dismissInstall() {
+            const banner = document.getElementById('installBanner');
+            if (banner) {
+                banner.style.animation = 'slideDown 0.3s ease';
+                setTimeout(() => banner.remove(), 300);
+            }
+        }
+    </script>
 </body>
 </html>
