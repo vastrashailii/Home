@@ -27,13 +27,13 @@ const products = [
         description: "This vibrant Colors of Jaipuri bedsheet features a traditional central mandala design accented by floral motifs. Crafted from pure cotton, it combines ethnic artistry with a soft, breathable feel perfect for any bedroom decor, 100% cotton, includes 2 pillow covers",
         images: [
             "images/bedsheet-mandala1.jpg",
-			"images/bedsheet-mandala2.jpg",
-			"images/bedsheet-mandala3.jpg",
-			"images/bedsheet-mandala4.jpg"
+            "images/bedsheet-mandala2.jpg",
+            "images/bedsheet-mandala3.jpg",
+            "images/bedsheet-mandala4.jpg"
         ],
-        colors: ["Blue","Organe", "Red"],
+        colors: ["Blue", "Orange", "Red"],
         availableColors: 4,
-		size: "King Size (100*108)"
+        size: "King Size (100*108)"
     },
     
     {
@@ -45,23 +45,23 @@ const products = [
         images: [
             "images/bedsheet-White_Print_elephate.jpg"
         ],
-        colors: "White",
-		size: "90*108"
-        // availableColors: 3
+        colors: ["White"],
+        availableColors: 1,
+        size: "90*108"
     },
     
     {
         id: 3,
-        name: "Arbana Hand-block Elephant Print ",
+        name: "Arbana Hand-block Elephant Print",
         category: "bedsheets",
         price: 550,
         description: "Rajasthani artisanal work, known for its intricate detailing and traditional motifs.red royal elephants and paisley patterns,includes pillow covers",
         images: [
             "images/bedsheet-elephant-brown.jpg"
         ],
-        colors: "Maroon-Red",
-		size: "90*108"
-        // availableColors: 2
+        colors: ["Maroon-Red"],
+        availableColors: 1,
+        size: "90*108"
     },
     
     {
@@ -73,13 +73,13 @@ const products = [
         images: [
             "images/bedsheet-geometric1.jpg",
             "images/bedsheet-geometric2.jpg",
-			"images/bedsheet-geometric3.jpg",
-			"images/bedsheet-geometric4.jpg",
-			"images/bedsheet-geometric5.jpg"
+            "images/bedsheet-geometric3.jpg",
+            "images/bedsheet-geometric4.jpg",
+            "images/bedsheet-geometric5.jpg"
         ],
-        colors: ["Yello-Blue", "Green-Black", "Blue-Brown", "Grey-Black", "Blue"],
-        size: "90*108",
-		availableColors: 5
+        colors: ["Yellow-Blue", "Green-Black", "Blue-Brown", "Grey-Black", "Blue"],
+        availableColors: 5,
+        size: "90*108"
     },
     
     {
@@ -91,12 +91,12 @@ const products = [
         images: [
             "images/Sanganeri-handblock-prints.jpg",
             "images/Sanganeri-handblock-prints1.jpg",
-			"images/Sanganeri-handblock-prints2.jpg",
-			"images/Sanganeri-handblock-prints3.jpg"
+            "images/Sanganeri-handblock-prints2.jpg",
+            "images/Sanganeri-handblock-prints3.jpg"
         ],
         colors: ["Lime Yellow", "Blue", "Gray", "Pink"],
-        size: "90*108",
-		availableColors: 4
+        availableColors: 4,
+        size: "90*108"
     },
     
     {
@@ -107,12 +107,12 @@ const products = [
         description: "Jaipuri hand-block printed bedsheet set is a quintessential example of traditional Rajasthani textile art, likely originating from artisan hubs like Sanganer or Bagru.",
         images: [
             "images/bedsheet-paisley-swirl.jpg",
-			"images/bedsheet-paisley-swirl.jpg",
-			"images/bedsheet-paisley-swirl.jpg"
+            "images/bedsheet-paisley-swirl.jpg",
+            "images/bedsheet-paisley-swirl.jpg"
         ],
         colors: ["Multicolored"],
-        size: "90*108",
-		availableColors: 3
+        availableColors: 3,
+        size: "90*108"
     },
     
     {
@@ -124,12 +124,12 @@ const products = [
         images: [
             "images/bedsheet-floral.jpg",
             "images/bedsheet-floral1.jpg",
-			"images/bedsheet-floral2.jpg",
-			"images/bedsheet-floral3.jpg"						
+            "images/bedsheet-floral2.jpg",
+            "images/bedsheet-floral3.jpg"
         ],
         colors: ["Green", "Pink", "Blue", "Orange"],
-        size: "90*108",
-		availableColors: 4
+        availableColors: 4,
+        size: "90*108"
     },
     
     {
@@ -141,9 +141,9 @@ const products = [
         images: [
             "images/damask pattern.jpg"
         ],
-        colors: ["yellow", "grey"],
+        colors: ["Yellow", "Grey"],
         availableColors: 2,
-		size: "90*108"
+        size: "90*108"
     },
     
     {
@@ -156,9 +156,9 @@ const products = [
             "images/bedsheet-elephant-blue.jpg",
             "images/bedsheet-elephant-green.jpg"
         ],
-        colors: ["Blue","Green"],
+        colors: ["Blue", "Green"],
         availableColors: 2,
-		size: "90*108"
+        size: "90*108"
     },
     
     // ═══════════════════════════════════════════════════════════
@@ -174,9 +174,9 @@ const products = [
         images: [
             "images/kurti-yellow-floral.jpg"
         ],
-        colors: "Yellow",
-     	size: ["L-40","XL-42","3XL-46"]
-       // availableColors: 3
+        colors: ["Yellow"],
+        availableColors: 1,
+        size: ["L-40", "XL-42", "3XL-46"]
     },
     
     {
@@ -188,23 +188,23 @@ const products = [
         images: [
             "images/kurti-aqua-floral.jpg"
         ],
-        colors: "Sky Blue",
-        size: ["M","L","XL","XXL"]
-		// availableColors: 3
+        colors: ["Sky Blue"],
+        availableColors: 1,
+        size: ["M", "L", "XL", "XXL"]
     },
     
     {
         id: 13,
-        name: "Long Kruti",
+        name: "Long Kurti",
         category: "suits",
         price: 350,
         description: "Beautiful Red brown floral print long kurti, 100% cotton, comfortable 3/4 sleeves",
         images: [
             "images/kurti-blue-floral.jpg"
         ],
-        colors: "Blue-Red",
-		size: ["M","L","XL"]
-       // availableColors: 3
+        colors: ["Blue-Red"],
+        availableColors: 1,
+        size: ["M", "L", "XL"]
     },
     
     {
@@ -216,54 +216,54 @@ const products = [
         images: [
             "images/kurti-grey-paisley.jpg"
         ],
-        colors: "Grey",
-        size: ["M-38","L-40","XL-42","XXL-44"]
-	   // availableColors: 3
+        colors: ["Grey"],
+        availableColors: 1,
+        size: ["M-38", "L-40", "XL-42", "XXL-44"]
     },
-	
-	{
+    
+    {
         id: 15,
         name: "3 piece-Embroidered Suits",
         category: "suits",
         price: 1700,
-        description: "Elegant embroidered suit with beautiful work, includes kurta and dupatta, comfortable, party wear	",
+        description: "Elegant embroidered suit with beautiful work, includes kurta and dupatta, comfortable, party wear",
         images: [
             "images/suit-sky-blue-embroidered.jpg"
         ],
-        colors: "Sky Blue",
-        size: ["M","L","XL"]
-	   // availableColors: 3
+        colors: ["Sky Blue"],
+        availableColors: 1,
+        size: ["M", "L", "XL"]
     },
     
-	{
+    {
         id: 16,
-        name: "kurta set",
+        name: "Kurta Set",
         category: "suits",
         price: 1400,
-        description: " Teal floral kurta set includes a straight-cut kurta, matching trousers or palazzos, and a dupatta. Crafted from breathable pure cotton or smooth viscose rayon, making it suitable for both daily wear and special occasions.",
+        description: "Teal floral kurta set includes a straight-cut kurta, matching trousers or palazzos, and a dupatta. Crafted from breathable pure cotton or smooth viscose rayon, making it suitable for both daily wear and special occasions.",
         images: [
             "images/suit-turquoise-palazzo.jpg"
         ],
-        colors: "Teal Blue",
-        size: ["L","XL","XXL"]
-	   // availableColors: 3
+        colors: ["Teal Blue"],
+        availableColors: 1,
+        size: ["L", "XL", "XXL"]
     },
-	
-	{
+    
+    {
         id: 17,
-        name: "kurta set",
+        name: "Kurta Set",
         category: "suits",
         price: 950,
-        description: " Features intricate detailing and a classic silhouette, ideal choice for festive or semi-formal occasions.",
+        description: "Features intricate detailing and a classic silhouette, ideal choice for festive or semi-formal occasions.",
         images: [
             "images/suit-pink.jpg",
-            "images/suit-green.jpg" 
-	    ],
-        colors: ["Pink","Lime Green"],
-        size: ["M","L","XL","XXXL"],
-	    availableColors: 2
+            "images/suit-green.jpg"
+        ],
+        colors: ["Pink", "Lime Green"],
+        availableColors: 2,
+        size: ["M", "L", "XL", "XXXL"]
     }
-	
+    
     // ═══════════════════════════════════════════════════════════
     // ✏️ ADD YOUR NEW PRODUCTS BELOW
     // ═══════════════════════════════════════════════════════════
