@@ -110,7 +110,7 @@ const products = [
             "images/bedsheet-paisley-swirl.jpg",
             "images/bedsheet-paisley-swirl.jpg"
         ],
-        colors: ["grey-green","Maroon-Green","Yellow-grey""],
+        colors: ["grey-green","Maroon-Green","Yellow-grey"],
         availableColors: 3,
         size: "90*108"
     },
