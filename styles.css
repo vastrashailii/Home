@@ -1556,3 +1556,73 @@ body {
     transform: scale(1.2);
     box-shadow: 0 0 0 2px white, 0 0 0 4px #8B4513;
 }
+
+/* ─── Size Selector ─── */
+.size-selector {
+    margin-bottom: 1rem;
+}
+
+.size-label {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.size-required {
+    color: #e53935;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-left: 0.3rem;
+}
+
+.size-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.size-btn {
+    padding: 0.3rem 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-body);
+}
+
+.size-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #fdf6ee;
+}
+
+.size-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 2px 6px rgba(139,69,19,0.3);
+}
+
+.size-selector.shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+}
+
+.cart-item-size {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
