@@ -107,8 +107,8 @@ const products = [
         description: "Jaipuri hand-block printed bedsheet set is a quintessential example of traditional Rajasthani textile art, likely originating from artisan hubs like Sanganer or Bagru.",
         images: [
             "images/bedsheet-paisley-swirl.jpg",
-            "images/bedsheet-paisley-swirl.jpg",
-            "images/bedsheet-paisley-swirl.jpg"
+            "images/bedsheet-paisley-swirl1.jpg",
+            "images/bedsheet-paisley-swirl2.jpg"
         ],
         colors: ["Grey-Green", "Maroon-Green", "Yellow-Grey"],
         availableColors: 3,
