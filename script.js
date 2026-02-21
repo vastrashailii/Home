@@ -32,47 +32,36 @@ function loadProducts(category = 'all') {
         // Initialize current image index
         currentImageIndex[product.id] = 0;
         
-        // Build color badges
-        const colorBadges = product.colors.slice(0, 3).map(color => 
-            `<span class="color-badge">${color}</span>`
-        ).join('');
-        
-        const moreColors = product.availableColors > 3 
-            ? `<span class="color-badge">+${product.availableColors - 3} more</span>` 
-            : '';
-        
-        // Build image gallery navigation
-        const imageNavigation = product.images.length > 1 
-            ? `<div class="image-navigation">
-                <button class="nav-btn prev-btn" onclick="changeProductImage(${product.id}, -1)">‹</button>
-                <button class="nav-btn next-btn" onclick="changeProductImage(${product.id}, 1)">›</button>
-                <div class="image-dots">
-                    ${product.images.map((_, i) => 
-                        `<span class="dot ${i === 0 ? 'active' : ''}" onclick="setProductImage(${product.id}, ${i})"></span>`
+        // Build color circle buttons (one per image/color variant)
+        const colorCircles = product.images.length > 1
+            ? `<div class="color-circles">
+                <span class="available-label">Select Color:</span>
+                <div class="color-circle-row">
+                    ${product.colors.map((color, i) => 
+                        `<button class="color-circle ${i === 0 ? 'active' : ''}" 
+                            id="circle-${product.id}-${i}"
+                            onclick="selectColorVariant(${product.id}, ${i})" 
+                            title="${color}"
+                            style="background:${colorNameToHex(color)}">
+                        </button>`
                     ).join('')}
                 </div>
-            </div>`
+               </div>`
             : '';
         
         productCard.innerHTML = `
             <div class="product-image-container" id="product-${product.id}">
                 <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy" id="img-${product.id}">
                 ${product.availableColors > 1 ? `<span class="variant-badge">${product.availableColors} Colors</span>` : ''}
-                ${imageNavigation}
             </div>
             <div class="product-info">
                 <div class="product-category">${product.category === 'bedsheets' ? 'Bedsheets' : 'Suits & Kurtis'}</div>
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
-                ${product.availableColors > 1 ? `
-                    <div class="color-options">
-                        <span class="available-label">Available in:</span>
-                        ${colorBadges}${moreColors}
-                    </div>
-                ` : ''}
+                ${colorCircles}
                 <div class="product-footer">
                     <span class="product-price">₹${product.price}</span>
-                    <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                    <button class="add-to-cart-btn" id="addBtn-${product.id}" onclick="addToCart(${product.id})">Add to Cart</button>
                 </div>
             </div>
         `;
@@ -81,38 +70,47 @@ function loadProducts(category = 'all') {
     });
 }
 
-// Change Product Image (Gallery Navigation)
-function changeProductImage(productId, direction) {
-    const product = products.find(p => p.id === productId);
-    if (!product || product.images.length <= 1) return;
-    
-    currentImageIndex[productId] = (currentImageIndex[productId] + direction + product.images.length) % product.images.length;
-    updateProductImage(productId);
-}
-
-// Set Product Image (Dot Navigation)
-function setProductImage(productId, index) {
+// Select Color Variant (Color Circle Click)
+function selectColorVariant(productId, index) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
-    
+
     currentImageIndex[productId] = index;
-    updateProductImage(productId);
+
+    // Update image
+    const imgElement = document.getElementById(`img-${productId}`);
+    if (imgElement) {
+        imgElement.src = product.images[index] || product.images[0];
+    }
+
+    // Update active circle
+    product.colors.forEach((_, i) => {
+        const circle = document.getElementById(`circle-${productId}-${i}`);
+        if (circle) circle.classList.toggle('active', i === index);
+    });
+
+    // Show selected color on button
+    const addBtn = document.getElementById(`addBtn-${productId}`);
+    if (addBtn) {
+        const colorName = product.colors[index] || '';
+        addBtn.textContent = `Add ${colorName}`;
+        setTimeout(() => { addBtn.textContent = 'Add to Cart'; }, 2000);
+    }
 }
 
-// Update Product Image Display
-function updateProductImage(productId) {
-    const product = products.find(p => p.id === productId);
-    const imgElement = document.getElementById(`img-${productId}`);
-    const dots = document.querySelectorAll(`#product-${productId} .dot`);
-    
-    if (imgElement && product) {
-        imgElement.src = product.images[currentImageIndex[productId]];
-        
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentImageIndex[productId]);
-        });
-    }
+// Map color names to hex for color circles
+function colorNameToHex(colorName) {
+    const map = {
+        'blue': '#4a90d9', 'sky blue': '#87ceeb', 'teal blue': '#008080',
+        'green': '#4caf50', 'lime green': '#8bc34a', 'lime yellow': '#cddc39',
+        'orange': '#ff9800', 'red': '#e53935', 'maroon-red': '#880e4f',
+        'pink': '#e91e63', 'grey': '#9e9e9e', 'gray': '#9e9e9e', 'grey-black': '#616161',
+        'yellow': '#ffd600', 'yellow-blue': '#a0b04a', 'white': '#f5f5f5',
+        'multicolored': 'linear-gradient(135deg,#e53935,#ff9800,#4caf50,#4a90d9)',
+        'blue-red': '#6a3ab5', 'blue-brown': '#5d8aa8', 'green-black': '#2e7d32',
+        'default': '#c8a876'
+    };
+    return map[colorName.toLowerCase()] || '#c8a876';
 }
 
 // Setup Event Listeners
@@ -488,7 +486,7 @@ function closePaymentModal() {
 }
 
 function openWhatsApp() {
-    window.open(whatsappUrl, '_blank');
+    window.location.href = whatsappUrl;
     closePaymentModal();
 }
 

@@ -31,7 +31,7 @@ const products = [
             "images/bedsheet-mandala3.jpg",
             "images/bedsheet-mandala4.jpg"
         ],
-        colors: ["Blue", "Orange", "Red"],
+        colors: ["Blue","Light Blue", "Orange", "Red"],
         availableColors: 4,
         size: "King Size (100*108)"
     },
@@ -110,7 +110,7 @@ const products = [
             "images/bedsheet-paisley-swirl.jpg",
             "images/bedsheet-paisley-swirl.jpg"
         ],
-        colors: ["Multicolored"],
+        colors: ["grey-green","Maroon-Green","Yellow-grey""],
         availableColors: 3,
         size: "90*108"
     },

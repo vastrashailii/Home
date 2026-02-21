@@ -914,8 +914,18 @@ body {
 .cart-item-image {
     width: 80px;
     height: 80px;
+    min-width: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.cart-item-image img {
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 8px;
+    display: block;
 }
 
 .cart-item-info {
@@ -1501,4 +1511,48 @@ body {
     border-top: 1px solid var(--border);
     color: var(--text-light);
     font-size: 0.9rem;
+}
+
+/* ─── Color Circle Variant Selector ─── */
+.color-circles {
+    margin-bottom: 1rem;
+}
+
+.color-circles .available-label {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.color-circle-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.color-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    padding: 0;
+}
+
+.color-circle:hover {
+    transform: scale(1.15);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.color-circle.active {
+    border-color: #8B4513;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #8B4513;
 }
