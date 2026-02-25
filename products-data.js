@@ -1,30 +1,130 @@
 // ═══════════════════════════════════════════════════════════════
 // VASTRA SHAILII - PRODUCT CATALOG
 // ═══════════════════════════════════════════════════════════════
-// 
-// 📝 HOW TO ADD NEW PRODUCTS:
-// 
-// 1. Copy any existing product below
-// 2. Change the id to next number (21, 22, 23...)
-// 3. Update name, price, description
-// 4. Add your image path(s) in images array
-// 5. List available colors
-// 6. Save the file - Done!
+//
+// 📝 CATEGORIES:
+//   "single-bedsheets"  → Single Bedsheet (60*90)
+//   "double-bedsheets"  → Double Bedsheet (90*108, 93*108, 100*108)
+//   "suits"             → Suits & Kurtis
+//
+// 📸 IMAGE VARIANT RULE:
+//   images[0] ← Color 1,  images[1] ← Color 2, ...
+//   When customer clicks a color circle, matching image shows.
+//
+// 📐 SIZE VARIANT RULE (for bedsheets):
+//   sizes: ["60*90", "90*108", "100*108"]
+//   Each size can have a different price via sizePrices{}
+//   e.g.  sizePrices: { "90*108": 550, "100*108": 600 }
 //
 // ═══════════════════════════════════════════════════════════════
 
 const products = [
-    
+
     // ═══════════════════════════════════════════════════════════
-    // BEDSHEETS SECTION
+    // SINGLE BEDSHEETS  (60*90)
     // ═══════════════════════════════════════════════════════════
-    
+
+    {
+        id: 101,
+        name: "Single Mandala Print",
+        category: "single-bedsheets",
+        printType: "Mandala",
+        price: 350,
+        description: "Classic Jaipuri mandala design on pure cotton single bedsheet. Vibrant colors, soft feel, includes 1 pillow cover.",
+        images: [
+            "images/single-mandala-blue.jpg",
+            "images/single-mandala-orange.jpg",
+            "images/single-mandala-pink.jpg"
+        ],
+        colors: ["Blue", "Orange", "Pink"],
+        availableColors: 3,
+        sizes: ["60*90"],
+        sizePrices: { "60*90": 350 }
+    },
+
+    {
+        id: 102,
+        name: "Single Arbana Elephant Print",
+        category: "single-bedsheets",
+        printType: "Arbana",
+        price: 320,
+        description: "Traditional hand-block elephant motifs on pure cotton. Rajasthani artisanal craft, includes 1 pillow cover.",
+        images: [
+            "images/single-elephant-white.jpg",
+            "images/single-elephant-maroon.jpg"
+        ],
+        colors: ["White", "Maroon-Red"],
+        availableColors: 2,
+        sizes: ["60*90"],
+        sizePrices: { "60*90": 320 }
+    },
+
+    {
+        id: 103,
+        name: "Single Ajrak Block Print",
+        category: "single-bedsheets",
+        printType: "Ajrak",
+        price: 380,
+        description: "Authentic Ajrak hand-block print from Barmer. Geometric patterns in natural dyes, 100% cotton, 1 pillow cover.",
+        images: [
+            "images/single-ajrak-blue.jpg",
+            "images/single-ajrak-red.jpg",
+            "images/single-ajrak-green.jpg"
+        ],
+        colors: ["Indigo Blue", "Brick Red", "Forest Green"],
+        availableColors: 3,
+        sizes: ["60*90"],
+        sizePrices: { "60*90": 380 }
+    },
+
+    {
+        id: 104,
+        name: "Single Floral Botanical Print",
+        category: "single-bedsheets",
+        printType: "Arbana",
+        price: 320,
+        description: "Delicate botanical florals and paisley, hand-block printed. Breathable pure cotton, includes 1 pillow cover.",
+        images: [
+            "images/single-floral-green.jpg",
+            "images/single-floral-pink.jpg",
+            "images/single-floral-blue.jpg",
+            "images/single-floral-yellow.jpg"
+        ],
+        colors: ["Green", "Pink", "Blue", "Yellow"],
+        availableColors: 4,
+        sizes: ["60*90"],
+        sizePrices: { "60*90": 320 }
+    },
+
+    {
+        id: 105,
+        name: "Single Chevron Border Print",
+        category: "single-bedsheets",
+        printType: "Arbana",
+        price: 320,
+        description: "Zig-zag chevron border with floral center, Jaipuri hand-block printed, 100% cotton, 1 pillow cover.",
+        images: [
+            "images/single-chevron-yellow.jpg",
+            "images/single-chevron-grey.jpg",
+            "images/single-chevron-blue.jpg"
+        ],
+        colors: ["Yellow-Blue", "Grey-Black", "Blue-Brown"],
+        availableColors: 3,
+        sizes: ["60*90"],
+        sizePrices: { "60*90": 320 }
+    },
+
+    // ═══════════════════════════════════════════════════════════
+    // DOUBLE BEDSHEETS — MANDALA PRINTS
+    // ═══════════════════════════════════════════════════════════
+
     {
         id: 1,
         name: "Mandala Double Bedsheet",
-        category: "bedsheets",
-        price: 600,
-        description: "This vibrant Colors of Jaipuri bedsheet features a traditional central mandala design accented by floral motifs. Crafted from pure cotton, it combines ethnic artistry with a soft, breathable feel perfect for any bedroom decor, 100% cotton, includes 2 pillow covers",
+        category: "double-bedsheets",
+        printType: "Mandala",
+        price: 550,
+        description: "Vibrant traditional central mandala design with floral motifs. Pure cotton, breathable, 2 pillow covers included.",
         images: [
             "images/bedsheet-mandala1.jpg",
             "images/bedsheet-mandala2.jpg",
@@ -33,43 +133,65 @@ const products = [
         ],
         colors: ["Blue", "Light Blue", "Orange", "Red"],
         availableColors: 4,
-        size: "King Size (100*108)"
+        sizes: ["90*108", "93*108", "100*108"],
+        sizePrices: {
+            "90*108":  550,
+            "93*108":  575,
+            "100*108": 600
+        }
     },
-    
+
+    // ═══════════════════════════════════════════════════════════
+    // DOUBLE BEDSHEETS — ARBANA PRINTS
+    // ═══════════════════════════════════════════════════════════
+
     {
         id: 2,
-        name: "Arbana Elephant Print with White base",
-        category: "bedsheets",
-        price: 550,
-        description: "Multicolored elephant motifs spread across a crisp white base, a classic hallmark of Rajasthani textile art. Pure Cotton Double BedSheet includes pillow covers",
+        name: "Arbana Elephant Print — White Base",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 500,
+        description: "Multicolored elephant motifs on crisp white base. Classic Rajasthani textile art, pure cotton, 2 pillow covers.",
         images: [
             "images/bedsheet-White_Print_elephate.jpg"
         ],
         colors: ["White"],
         availableColors: 1,
-        size: "90*108"
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 500,
+            "93*108": 525
+        }
     },
-    
+
     {
         id: 3,
         name: "Arbana Hand-block Elephant Print",
-        category: "bedsheets",
-        price: 550,
-        description: "Rajasthani artisanal work, known for its intricate detailing and traditional motifs. Red royal elephants and paisley patterns, includes pillow covers",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 500,
+        description: "Red royal elephants and paisley patterns. Rajasthani artisanal hand-block work, includes 2 pillow covers.",
         images: [
-            "images/bedsheet-elephant-brown.jpg"
+            "images/bedsheet-elephant-brown.jpg",
+            "images/bedsheet-elephant-blue.jpg",
+            "images/bedsheet-elephant-green.jpg"
         ],
-        colors: ["Maroon-Red"],
-        availableColors: 1,
-        size: "90*108"
+        colors: ["Maroon-Red", "Blue", "Green"],
+        availableColors: 3,
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 500,
+            "93*108": 525
+        }
     },
-    
+
     {
         id: 4,
-        name: "Arbana Zig-Zag or Chevron border",
-        category: "bedsheets",
-        price: 550,
-        description: "Jaipuri hand-block printed bedsheet set showcases a refreshing seafoam green and white floral design, accented by a distinctive geometric chevron border.",
+        name: "Arbana Zig-Zag Chevron Border",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 500,
+        description: "Seafoam green and white floral design with distinctive geometric chevron border. Jaipuri hand-block printed, 2 pillow covers.",
         images: [
             "images/bedsheet-geometric1.jpg",
             "images/bedsheet-geometric2.jpg",
@@ -79,15 +201,20 @@ const products = [
         ],
         colors: ["Yellow-Blue", "Green-Black", "Blue-Brown", "Grey-Black", "Blue"],
         availableColors: 5,
-        size: "90*108"
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 500,
+            "93*108": 525
+        }
     },
-    
+
     {
         id: 5,
-        name: "Arbana jharokha-Border",
-        category: "bedsheets",
-        price: 550,
-        description: "Jaipuri hand-block printed bedsheet is a quintessential example of the traditional textile art from Rajasthan, botanical florals, paisley patterns, vibrant colors, 2 pillow covers",
+        name: "Arbana Jharokha Border",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 500,
+        description: "Botanical florals and paisley patterns with jharokha border motif. Vibrant Jaipuri colors, 2 pillow covers.",
         images: [
             "images/Sanganeri-handblock-prints.jpg",
             "images/Sanganeri-handblock-prints1.jpg",
@@ -96,31 +223,41 @@ const products = [
         ],
         colors: ["Lime Yellow", "Blue", "Gray", "Pink"],
         availableColors: 4,
-        size: "90*108"
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 500,
+            "93*108": 525
+        }
     },
-    
+
     {
         id: 6,
         name: "Arbana Floral Medallions",
-        category: "bedsheets",
-        price: 550,
-        description: "Jaipuri hand-block printed bedsheet set is a quintessential example of traditional Rajasthani textile art, likely originating from artisan hubs like Sanganer or Bagru.",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 500,
+        description: "Traditional Rajasthani floral medallion prints, originating from Sanganer artisan workshops. Includes 2 pillow covers.",
         images: [
             "images/bedsheet-paisley-swirl.jpg",
-            "images/bedsheet-paisley-swirl1.jpg",
-            "images/bedsheet-paisley-swirl2.jpg"
+            "images/bedsheet-paisley-swirl2.jpg",
+            "images/bedsheet-paisley-swirl3.jpg"
         ],
         colors: ["Grey-Green", "Maroon-Green", "Yellow-Grey"],
         availableColors: 3,
-        size: "90*108"
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 500,
+            "93*108": 525
+        }
     },
-    
+
     {
         id: 7,
-        name: "Arbana botanical Prints",
-        category: "bedsheets",
-        price: 550,
-        description: "Jaipuri hand-block printed bedsheet features a traditional botanical and geometric design, a classic hallmark of Rajasthani artisanal textile work",
+        name: "Arbana Botanical Prints",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 500,
+        description: "Traditional botanical and geometric design, Rajasthani artisanal hand-block work. 2 pillow covers included.",
         images: [
             "images/bedsheet-floral.jpg",
             "images/bedsheet-floral1.jpg",
@@ -129,163 +266,238 @@ const products = [
         ],
         colors: ["Green", "Pink", "Blue", "Orange"],
         availableColors: 4,
-        size: "90*108"
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 500,
+            "93*108": 525
+        }
     },
-    
+
     {
         id: 8,
-        name: "Arbana Pashmina silk jacquard Print",
-        category: "bedsheets",
-        price: 550,
-        description: "These designs are characteristic of high-end Kashmiri craftsmanship and are often used for luxury shawls, scarves, or bedding.",
+        name: "Arbana Pashmina Silk Jacquard",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 500,
+        description: "High-end Kashmiri jacquard-style craftsmanship. Luxury feel, classic damask pattern, 2 pillow covers.",
         images: [
-            "images/damask pattern.jpg"
+            "images/damask-pattern-yellow.jpg",
+            "images/damask-pattern-grey.jpg"
         ],
         colors: ["Yellow", "Grey"],
         availableColors: 2,
-        size: "90*108"
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 500,
+            "93*108": 525
+        }
     },
-    
+
+    // ═══════════════════════════════════════════════════════════
+    // DOUBLE BEDSHEETS — AJRAK PRINTS
+    // ═══════════════════════════════════════════════════════════
+
+    {
+        id: 20,
+        name: "Ajrak Hand-block Print",
+        category: "double-bedsheets",
+        printType: "Ajrak",
+        price: 600,
+        description: "Authentic Ajrak resist-block print from Barmer. Traditional geometric and floral motifs in natural dyes. 100% cotton, 2 pillow covers.",
+        images: [
+            "images/ajrak-double-blue.jpg",
+            "images/ajrak-double-red.jpg",
+            "images/ajrak-double-black.jpg"
+        ],
+        colors: ["Indigo Blue", "Brick Red", "Black-Gold"],
+        availableColors: 3,
+        sizes: ["90*108", "93*108", "100*108"],
+        sizePrices: {
+            "90*108":  600,
+            "93*108":  625,
+            "100*108": 650
+        }
+    },
+
+    {
+        id: 21,
+        name: "Ajrak Barmeri Floral",
+        category: "double-bedsheets",
+        printType: "Ajrak",
+        price: 600,
+        description: "Barmeri Ajrak with intricate floral medallions and fine geometric borders. Natural dyes, 100% cotton, 2 pillow covers.",
+        images: [
+            "images/ajrak-floral-blue.jpg",
+            "images/ajrak-floral-maroon.jpg"
+        ],
+        colors: ["Deep Blue", "Maroon"],
+        availableColors: 2,
+        sizes: ["90*108", "93*108", "100*108"],
+        sizePrices: {
+            "90*108":  600,
+            "93*108":  625,
+            "100*108": 650
+        }
+    },
+
     {
         id: 9,
         name: "Warli Tribal Art Bedsheet",
-        category: "bedsheets",
-        price: 1799,
-        description: "Authentic Warli tribal art design, unique cultural motifs, double bed",
+        category: "double-bedsheets",
+        printType: "Arbana",
+        price: 550,
+        description: "Authentic Warli tribal art motifs. Unique cultural design, double bed, 2 pillow covers.",
         images: [
             "images/bedsheet-elephant-blue.jpg",
             "images/bedsheet-elephant-green.jpg"
         ],
         colors: ["Blue", "Green"],
         availableColors: 2,
-        size: "90*108"
+        sizes: ["90*108", "93*108"],
+        sizePrices: {
+            "90*108": 550,
+            "93*108": 575
+        }
     },
-    
+
     // ═══════════════════════════════════════════════════════════
-    // KURTIS & SUITS SECTION
+    // SUITS & KURTIS
     // ═══════════════════════════════════════════════════════════
-    
+
     {
         id: 11,
         name: "Floral Print Cotton Kurti",
         category: "suits",
         price: 350,
-        description: "A charming yellow kurti with delicate floral prints, crafted from soft 100% pure cotton. Features comfortable 3/4 sleeves and a relaxed fit — perfect for daily wear, casual outings, or festive occasions. Light, breathable, and easy to style. | Size: M / L / XL / XXL",
+        description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves.",
         images: [
             "images/kurti-yellow-floral.jpg"
         ],
         colors: ["Yellow"],
         availableColors: 1,
-        size: ["M", "L", "XL", "XXL"]
+        sizes: ["L-40", "XL-42", "3XL-46"],
+        sizePrices: { "L-40": 350, "XL-42": 350, "3XL-46": 350 }
     },
-    
+
     {
         id: 12,
         name: "Floral Print Aqua Kurti",
         category: "suits",
         price: 350,
-        description: "A fresh and breezy aqua blue kurti adorned with vibrant floral prints. Made from premium 100% cotton, it offers all-day comfort with a flattering silhouette and 3/4 sleeves. Ideal for everyday wear, college, or casual get-togethers. | Size: M / L / XL / XXL",
+        description: "Beautiful floral print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes.",
         images: [
             "images/kurti-aqua-floral.jpg"
         ],
         colors: ["Sky Blue"],
         availableColors: 1,
-        size: ["M", "L", "XL", "XXL"]
+        sizes: ["M", "L", "XL", "XXL"],
+        sizePrices: { "M": 350, "L": 350, "XL": 350, "XXL": 350 }
     },
-    
+
     {
         id: 13,
         name: "Long Kurti",
         category: "suits",
         price: 350,
-        description: "An elegant long kurti featuring a rich red-blue floral block print, crafted from breathable 100% cotton. The graceful length adds a traditional yet stylish touch — perfect for casual wear and festive occasions alike. Pair with leggings or palazzos for a complete look. | Size: M / L / XL / XXL",
+        description: "Red-brown floral print long kurti, 100% cotton, comfortable 3/4 sleeves.",
         images: [
             "images/kurti-blue-floral.jpg"
         ],
         colors: ["Blue-Red"],
         availableColors: 1,
-        size: ["M", "L", "XL", "XXL"]
+        sizes: ["M", "L", "XL"],
+        sizePrices: { "M": 350, "L": 350, "XL": 350 }
     },
-    
+
     {
         id: 14,
         name: "Kurti Paisley Print",
         category: "suits",
         price: 350,
-        description: "A sophisticated grey kurti featuring classic paisley prints with fine detailing. Stitched in soft 100% cotton with comfortable 3/4 sleeves and a neat straight cut. Versatile enough for office wear, family functions, or casual outings. | Size: M / L / XL / XXL",
+        description: "Beautiful paisley print kurti, 100% cotton, comfortable 3/4 sleeves, all sizes.",
         images: [
             "images/kurti-grey-paisley.jpg"
         ],
         colors: ["Grey"],
         availableColors: 1,
-        size: ["M", "L", "XL", "XXL"]
+        sizes: ["M-38", "L-40", "XL-42", "XXL-44"],
+        sizePrices: { "M-38": 350, "L-40": 350, "XL-42": 350, "XXL-44": 350 }
     },
-    
+
     {
         id: 15,
-        name: "3 Piece Embroidered Suit",
+        name: "3-Piece Embroidered Suit",
         category: "suits",
         price: 1700,
-        description: "A stunning 3-piece embroidered suit set in royal sky blue, featuring intricate thread embroidery on the kurta with a beautifully matching dupatta and bottom. Crafted for special occasions, festivals, and parties — this ensemble blends traditional craftsmanship with elegant style. Complete ready-to-wear festive outfit. | Size: M / L / XL / XXL / XXXL",
+        description: "Elegant embroidered suit, beautiful work, includes kurta and dupatta. Party wear.",
         images: [
             "images/suit-sky-blue-embroidered.jpg"
         ],
         colors: ["Sky Blue"],
         availableColors: 1,
-        size: ["M", "L", "XL", "XXL", "XXXL"]
+        sizes: ["M", "L", "XL"],
+        sizePrices: { "M": 1700, "L": 1700, "XL": 1700 }
     },
-    
+
     {
         id: 16,
         name: "Teal Floral Kurta Set",
         category: "suits",
         price: 1400,
-        description: "A graceful teal floral kurta set including a straight-cut kurta, matching trousers or palazzos, and a coordinating dupatta. Crafted from breathable pure cotton or smooth viscose rayon for all-day comfort. The rich teal color with floral detailing makes it perfect for festivals, family occasions, and semi-formal events. | Size: M / L / XL / XXL / XXXL",
+        description: "Straight-cut kurta, matching trousers/palazzos, and dupatta. Pure cotton or viscose rayon. Suitable for daily and special occasions.",
         images: [
             "images/suit-turquoise-palazzo.jpg"
         ],
         colors: ["Teal Blue"],
         availableColors: 1,
-        size: ["M", "L", "XL", "XXL", "XXXL"]
+        sizes: ["L", "XL", "XXL"],
+        sizePrices: { "L": 1400, "XL": 1400, "XXL": 1400 }
     },
-    
+
     {
         id: 17,
         name: "Festive Kurta Set",
         category: "suits",
         price: 950,
-        description: "A beautifully crafted kurta set featuring intricate embroidery detailing and a classic silhouette. Available in vibrant Pink and Lime Green shades — an ideal choice for festive celebrations, weddings, and semi-formal occasions. Includes a matching bottom and dupatta for a complete, elegant look. | Size: M / L / XL / XXL / XXXL",
+        description: "Intricate detailing, classic silhouette. Ideal for festive or semi-formal occasions.",
         images: [
             "images/suit-pink.jpg",
             "images/suit-green.jpg"
         ],
         colors: ["Pink", "Lime Green"],
         availableColors: 2,
-        size: ["M", "L", "XL", "XXL", "XXXL"]
+        sizes: ["M", "L", "XL", "XXXL"],
+        sizePrices: { "M": 950, "L": 950, "XL": 950, "XXXL": 950 }
     }
-    
+
     // ═══════════════════════════════════════════════════════════
-    // ✏️ ADD YOUR NEW PRODUCTS BELOW
+    // ✏️ ADD NEW PRODUCTS BELOW
     // ═══════════════════════════════════════════════════════════
     //
-    // TEMPLATE - Copy this and fill in your details:
+    // TEMPLATE — Copy and fill in:
     //
     // ,{
-    //     id: 21,  // Use next number: 21, 22, 23...
-    //     name: "Your Product Name Here",
-    //     category: "bedsheets",  // or "suits"
-    //     price: 1499,  // Your price
-    //     description: "Describe your product here - material, size, features",
+    //     id: 30,
+    //     name: "Your Product Name",
+    //     category: "single-bedsheets",   // single-bedsheets | double-bedsheets | suits
+    //     printType: "Mandala",           // Mandala | Arbana | Ajrak  (bedsheets only)
+    //     price: 350,                     // base/lowest price
+    //     description: "Description here",
     //     images: [
-    //         "images/your-photo-1.jpg",
-    //         "images/your-photo-2.jpg"  // Add more if multiple colors
+    //         "images/your-photo-color1.jpg",
+    //         "images/your-photo-color2.jpg"
     //     ],
-    //     colors: ["Color 1", "Color 2", "Color 3"],
-    //     availableColors: 3  // Total number of colors
+    //     colors: ["Color 1", "Color 2"],
+    //     availableColors: 2,
+    //     sizes: ["90*108", "100*108"],
+    //     sizePrices: {
+    //         "90*108":  550,
+    //         "100*108": 600
+    //     }
     // }
     //
     // ═══════════════════════════════════════════════════════════
-    
+
 ];
 
 // Don't edit below this line

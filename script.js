@@ -7,7 +7,6 @@
 // Shopping Cart
 let cart = [];
 let currentImageIndex = {};
-let selectedSize = {}; // Tracks chosen size per product
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,72 +15,141 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCartFromStorage();
 });
 
-// Load Products with Image Gallery
-function loadProducts(category = 'all') {
+// ── State ──────────────────────────────────────────────────────
+let currentCategory = 'all';
+let currentPrint    = 'all';
+const selectedSize  = {};   // productId → chosen size string
+
+// Category display labels
+function categoryLabel(cat) {
+    if (cat === 'single-bedsheets') return 'Single Bedsheet (60*90)';
+    if (cat === 'double-bedsheets') return 'Double Bedsheet';
+    if (cat === 'suits')            return 'Suits & Kurtis';
+    return cat;
+}
+
+// Load Products with Image Gallery + Size + Print filters
+function loadProducts(category = 'all', printFilter = 'all') {
+    currentCategory = category;
+    currentPrint    = printFilter;
+
     const productsGrid = document.getElementById('productsGrid');
     productsGrid.innerHTML = '';
-    
-    const filteredProducts = category === 'all' 
-        ? products 
+
+    // Show/hide print sub-filter row
+    const printFilters = document.getElementById('printFilters');
+    if (printFilters) {
+        if (category === 'double-bedsheets' || category === 'single-bedsheets') {
+            printFilters.style.display = 'flex';
+        } else {
+            printFilters.style.display = 'none';
+        }
+    }
+
+    let filtered = category === 'all'
+        ? products
         : products.filter(p => p.category === category);
-    
-    filteredProducts.forEach((product, index) => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.style.animationDelay = `${index * 0.1}s`;
-        
-        // Initialize current image index
+
+    if (printFilter !== 'all') {
+        filtered = filtered.filter(p => p.printType === printFilter);
+    }
+
+    if (filtered.length === 0) {
+        productsGrid.innerHTML = '<p style="text-align:center;padding:3rem;color:var(--text-light);font-size:1.1rem;">No products found.</p>';
+        return;
+    }
+
+    filtered.forEach((product, index) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+
         currentImageIndex[product.id] = 0;
-        
-        // Build color circle buttons (one per image/color variant)
+
+        // ── Color circles ──
         const colorCircles = product.images.length > 1
             ? `<div class="color-circles">
-                <span class="available-label">Select Color:</span>
+                <span class="available-label">Color:</span>
                 <div class="color-circle-row">
-                    ${product.colors.map((color, i) => 
-                        `<button class="color-circle ${i === 0 ? 'active' : ''}" 
+                    ${product.colors.map((color, i) =>
+                        `<button class="color-circle ${i === 0 ? 'active' : ''}"
                             id="circle-${product.id}-${i}"
-                            onclick="selectColorVariant(${product.id}, ${i})" 
+                            onclick="selectColorVariant(${product.id}, ${i})"
                             title="${color}"
                             style="background:${colorNameToHex(color)}">
                         </button>`
                     ).join('')}
                 </div>
                </div>`
-            : '';
-        
-        // Build size selector (suits/kurtis only)
-        const sizeSelector = (product.category === 'suits' && Array.isArray(product.size))
-            ? `<div class="size-selector" id="size-selector-${product.id}">
-                <span class="size-label">Select Size: <span class="size-required" id="size-err-${product.id}" style="display:none">⚠ Please select a size</span></span>
+            : (product.colors && product.colors.length === 1
+                ? `<div class="color-circles"><span class="available-label">Color: <strong>${product.colors[0]}</strong></span></div>`
+                : '');
+
+        // ── Size selector ──
+        const hasSizes = product.sizes && product.sizes.length > 1;
+
+        const sizeSelector = hasSizes
+            ? `<div class="size-selector">
+                <span class="size-label">Size:</span>
                 <div class="size-btn-row">
-                    ${product.size.map(s =>
-                        `<button class="size-btn" id="sizebtn-${product.id}-${s}" onclick="selectSize(${product.id}, '${s}')">${s}</button>`
+                    ${product.sizes.map((sz, i) =>
+                        `<button class="size-btn ${i === 0 ? 'active' : ''}"
+                            id="size-${product.id}-${sz.replace(/\*/g,'x')}"
+                            onclick="selectSize(${product.id}, '${sz}')">${sz}</button>`
                     ).join('')}
                 </div>
                </div>`
+            : (product.sizes && product.sizes.length === 1
+                ? `<div class="size-selector"><span class="size-label">Size: <strong>${product.sizes[0]}</strong></span></div>`
+                : '');
+
+        // ── Print type badge ──
+        const printBadge = product.printType
+            ? `<span class="print-badge print-${product.printType.toLowerCase()}">${product.printType}</span>`
             : '';
 
-        productCard.innerHTML = `
+        card.innerHTML = `
             <div class="product-image-container" id="product-${product.id}">
-                <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy" id="img-${product.id}">
+                <img src="${product.images[0]}" alt="${product.name}" class="product-image" loading="lazy" id="img-${product.id}"
+                     onerror="this.src='images/placeholder.jpg'">
                 ${product.availableColors > 1 ? `<span class="variant-badge">${product.availableColors} Colors</span>` : ''}
+                ${printBadge}
             </div>
             <div class="product-info">
-                <div class="product-category">${product.category === 'bedsheets' ? 'Bedsheets' : 'Suits & Kurtis'}</div>
+                <div class="product-category">${categoryLabel(product.category)}</div>
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
                 ${colorCircles}
                 ${sizeSelector}
                 <div class="product-footer">
-                    <span class="product-price">₹${product.price}</span>
+                    <span class="product-price" id="price-${product.id}">₹${product.price}</span>
                     <button class="add-to-cart-btn" id="addBtn-${product.id}" onclick="addToCart(${product.id})">Add to Cart</button>
                 </div>
             </div>
         `;
-        
-        productsGrid.appendChild(productCard);
+
+        productsGrid.appendChild(card);
     });
+}
+
+// ── Size selection ─────────────────────────────────────────────
+function selectSize(productId, size) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    selectedSize[productId] = size;
+
+    if (product.sizes) {
+        product.sizes.forEach(sz => {
+            const btn = document.getElementById(`size-${productId}-${sz.replace(/\*/g,'x')}`);
+            if (btn) btn.classList.toggle('active', sz === size);
+        });
+    }
+
+    const priceEl = document.getElementById(`price-${productId}`);
+    if (priceEl && product.sizePrices && product.sizePrices[size]) {
+        priceEl.textContent = `₹${product.sizePrices[size]}`;
+    }
 }
 
 // Select Color Variant (Color Circle Click)
@@ -127,23 +195,6 @@ function colorNameToHex(colorName) {
     return map[colorName.toLowerCase()] || '#c8a876';
 }
 
-// Select Size
-function selectSize(productId, size) {
-    selectedSize[productId] = size;
-
-    // Update button active states
-    const product = products.find(p => p.id === productId);
-    if (!product || !Array.isArray(product.size)) return;
-    product.size.forEach(s => {
-        const btn = document.getElementById(`sizebtn-${productId}-${s}`);
-        if (btn) btn.classList.toggle('active', s === size);
-    });
-
-    // Hide error message if showing
-    const errEl = document.getElementById(`size-err-${productId}`);
-    if (errEl) errEl.style.display = 'none';
-}
-
 // Setup Event Listeners
 function setupEventListeners() {
     // Category Filters
@@ -152,9 +203,24 @@ function setupEventListeners() {
         btn.addEventListener('click', function() {
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
+            // Reset print filter when switching category
+            document.querySelectorAll('.print-btn').forEach(b => b.classList.remove('active'));
+            const firstPrint = document.querySelector('.print-btn[data-print="all"]');
+            if (firstPrint) firstPrint.classList.add('active');
+            currentPrint = 'all';
             const category = this.getAttribute('data-category');
-            loadProducts(category);
+            loadProducts(category, 'all');
         });
+    });
+
+    // Print sub-filters (Mandala / Arbana / Ajrak)
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('print-btn')) {
+            document.querySelectorAll('.print-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            const print = e.target.getAttribute('data-print');
+            loadProducts(currentCategory, print);
+        }
     });
     
     // Cart Button
@@ -183,66 +249,50 @@ function setupEventListeners() {
     });
 }
 
-// Add to Cart - Handles color variants + size
+// Add to Cart - Handles color variants separately
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const selectedImageIndex = currentImageIndex[productId] || 0;
     const selectedImage = product.images[selectedImageIndex];
-
+    
     // Determine color variant name
     let selectedColor = 'Default';
     if (product.colors && product.colors[selectedImageIndex]) {
         selectedColor = product.colors[selectedImageIndex];
     }
+    
+    // Get selected size (or default to first size)
+    const chosenSize = selectedSize[productId] || (product.sizes ? product.sizes[0] : null);
+    const chosenPrice = (product.sizePrices && chosenSize && product.sizePrices[chosenSize])
+        ? product.sizePrices[chosenSize]
+        : product.price;
 
-    // Size check for suits/kurtis
-    if (product.category === 'suits' && Array.isArray(product.size)) {
-        if (!selectedSize[productId]) {
-            const errEl = document.getElementById(`size-err-${productId}`);
-            if (errEl) {
-                errEl.style.display = 'inline';
-                errEl.style.animation = 'none';
-                setTimeout(() => errEl.style.animation = '', 10);
-            }
-            // Shake the size selector
-            const sel = document.getElementById(`size-selector-${productId}`);
-            if (sel) {
-                sel.classList.add('shake');
-                setTimeout(() => sel.classList.remove('shake'), 500);
-            }
-            return; // Stop — no size selected
-        }
-    }
+    // Unique cart item = product + color + size
+    const cartItemId = `${productId}-${selectedImageIndex}-${(chosenSize||'').replace(/[^a-z0-9]/gi,'')}`;
 
-    const chosenSize = selectedSize[productId] || null;
-
-    // Check if this exact variant (product + color + size) already exists in cart
-    const existingItem = cart.find(item =>
-        item.id === productId &&
-        item.selectedImage === selectedImage &&
-        item.selectedSize === chosenSize
-    );
-
+    const existingItem = cart.find(item => item.cartItemId === cartItemId);
+    
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
         cart.push({
             ...product,
+            price: chosenPrice,
             quantity: 1,
             selectedImage: selectedImage,
             selectedColor: selectedColor,
             selectedSize: chosenSize,
-            cartItemId: `${productId}-${selectedImageIndex}-${chosenSize || 'ns'}`
+            cartItemId: cartItemId
         });
     }
-
+    
     updateCart();
     saveCartToStorage();
-
+    
     // Show feedback
     const btn = event.target;
     const originalText = btn.textContent;
-    btn.textContent = chosenSize ? `Added (${chosenSize}) ✓` : `Added ✓`;
+    btn.textContent = `Added ${selectedColor} ✓`;
     btn.style.background = '#25D366';
     setTimeout(() => {
         btn.textContent = originalText;
@@ -274,11 +324,11 @@ function updateCart() {
                 </div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${item.name}</div>
-                    ${item.selectedColor && item.selectedColor !== 'Default' 
-                        ? `<div class="cart-item-color">Color: ${item.selectedColor}</div>` 
+                    ${item.selectedColor && item.selectedColor !== 'Default'
+                        ? `<div class="cart-item-color">🎨 ${item.selectedColor}</div>`
                         : ''}
-                    ${item.selectedSize 
-                        ? `<div class="cart-item-size">Size: ${item.selectedSize}</div>` 
+                    ${item.selectedSize
+                        ? `<div class="cart-item-color">📐 Size: ${item.selectedSize}</div>`
                         : ''}
                     <div class="cart-item-price">₹${item.price}</div>
                     <div class="cart-item-quantity">
@@ -420,7 +470,9 @@ function handleCheckout(e) {
         if (item.selectedColor && item.selectedColor !== 'Default') {
             orderDetails += `   🎨 Color: ${item.selectedColor}\n`;
         }
-        if (item.selectedSize) orderDetails += `   👗 Size: ${item.selectedSize}\n`;
+        if (item.selectedSize) {
+            orderDetails += `   📐 Size: ${item.selectedSize}\n`;
+        }
         orderDetails += `   Quantity: ${item.quantity}\n`;
         orderDetails += `   Price: ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
     });

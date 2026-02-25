@@ -1556,10 +1556,89 @@ body {
     transform: scale(1.2);
     box-shadow: 0 0 0 2px white, 0 0 0 4px #8B4513;
 }
+/* ═══════════════════════════════════════════════════════
+   NEW CATEGORY & VARIANT STYLES — Vastra Shailii Update
+   ═══════════════════════════════════════════════════════ */
 
-/* ─── Size Selector ─── */
+/* Print sub-filter row */
+.print-filters {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50px;
+    border: 1.5px solid rgba(212, 175, 55, 0.35);
+}
+
+.print-filter-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-right: 0.25rem;
+    white-space: nowrap;
+}
+
+.print-btn {
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--text-dark);
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-body);
+}
+
+.print-btn:hover {
+    border-color: var(--secondary);
+    color: var(--primary);
+}
+
+.print-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Print type badge on product card image */
+.print-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    z-index: 3;
+    backdrop-filter: blur(4px);
+}
+
+.print-badge.print-mandala {
+    background: rgba(139, 69, 19, 0.85);
+    color: #fff;
+}
+
+.print-badge.print-arbana {
+    background: rgba(212, 143, 37, 0.9);
+    color: #fff;
+}
+
+.print-badge.print-ajrak {
+    background: rgba(30, 80, 150, 0.85);
+    color: #fff;
+}
+
+/* Size selector */
 .size-selector {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .size-label {
@@ -1567,14 +1646,7 @@ body {
     font-size: 0.82rem;
     color: var(--text-light);
     font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-
-.size-required {
-    color: #e53935;
-    font-size: 0.78rem;
-    font-weight: 600;
-    margin-left: 0.3rem;
+    margin-bottom: 0.45rem;
 }
 
 .size-btn-row {
@@ -1584,45 +1656,52 @@ body {
 }
 
 .size-btn {
-    padding: 0.3rem 0.75rem;
-    border: 2px solid var(--border);
+    padding: 0.3rem 0.7rem;
+    border: 1.5px solid var(--border);
     border-radius: 6px;
-    background: var(--bg-light);
+    background: var(--white);
     color: var(--text-dark);
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: var(--font-body);
+    white-space: nowrap;
 }
 
 .size-btn:hover {
     border-color: var(--primary);
     color: var(--primary);
-    background: #fdf6ee;
+    background: rgba(139, 69, 19, 0.06);
 }
 
 .size-btn.active {
     background: var(--primary);
     border-color: var(--primary);
-    color: white;
-    box-shadow: 0 2px 6px rgba(139,69,19,0.3);
+    color: var(--white);
+    font-weight: 600;
 }
 
-.size-selector.shake {
-    animation: shake 0.4s ease;
+/* Price updates with transition */
+.product-price {
+    transition: all 0.2s ease;
 }
 
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%       { transform: translateX(-6px); }
-    40%       { transform: translateX(6px); }
-    60%       { transform: translateX(-4px); }
-    80%       { transform: translateX(4px); }
-}
-
-.cart-item-size {
-    font-size: 0.82rem;
+/* Cart item size display */
+.cart-item-color {
+    font-size: 0.78rem;
     color: var(--text-light);
-    margin-bottom: 0.25rem;
+    margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .print-filters {
+        border-radius: 12px;
+        padding: 0.6rem;
+    }
+    .size-btn {
+        padding: 0.28rem 0.55rem;
+        font-size: 0.74rem;
+    }
 }
