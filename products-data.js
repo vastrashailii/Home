@@ -31,16 +31,14 @@ const products = [
         id: 101,
         name: "Barmeri Kantha Print",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Classic Barmeri Kantha design, pure cotton, 1 pillow cover",
         images: [
             "images/BarmeriKantha_blue.jpg",
             "images/BarmeriKantha_yellow.jpg"
         ],
-        colors: ["light blue", "light yellow"],
+        colors: ["blue", "yellow"],
         availableColors: 2,
-        sizes: ["60*90"],
         sizePrices: {
             "60*90": 350
         }
@@ -50,7 +48,6 @@ const products = [
         id: 102,
         name: "Handblock Print design",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Traditional hand-block design motifs, Rajasthani craft, 1 pillow cover",
         images: [
@@ -59,9 +56,8 @@ const products = [
             "images/HandBlock_grey.jpg",
             "images/HandBlock_maroon.jpg"
         ],
-        colors: ["blue", "brown", "grey", "maroon"],
+        colors: ["blue", "Brown", "Gray", "Maroon-Red"],
         availableColors: 4,
-        sizes: ["60*90"],
         sizePrices: {
             "60*90": 350
         }
@@ -71,7 +67,6 @@ const products = [
         id: 103,
         name: "Rajasthani Handblock Print",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Authentic Rajasthani hand-block , natural dyes, 1 pillow cover",
         images: [
@@ -90,7 +85,6 @@ const products = [
         id: 104,
         name: "Kalamkari Print",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Delicate botanical florals and paisley, hand-block printed, 1 pillow cover",
         images: [
@@ -98,9 +92,8 @@ const products = [
             "images/kalamkari_maroon.jpg",
             "images/kalamkari_purple.jpg"
         ],
-        colors: ["blue", "Maroon", "Purple"],
+        colors: ["blue", "Maroon-Red", "Purple"],
         availableColors: 3,
-        sizes: ["60*90"],
         sizePrices: {
             "60*90": 350
         }
@@ -110,7 +103,6 @@ const products = [
         id: 105,
         name: "Mithila Print Design",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Traditional Mithila Print Design (Camel,Elephants,peacock,peoples) with jaipuri touch, 1 pillow cover",
         images: [
@@ -118,9 +110,8 @@ const products = [
             "images/mithila_print_green.jpg",
             "images/mithila_print_pink.jpg"
         ],
-        colors: ["blue", "green", "pink"],
+        colors: ["blue", "pink", "yellow"],
         availableColors: 3,
-        sizes: ["60*90"],
         sizePrices: {
             "60*90": 350
         }
@@ -137,7 +128,7 @@ const products = [
             "images/Motifs_khaki.jpg",
             "images/Motifs_yellow.jpg"
         ],
-        colors: ["khaki", "yellow"],
+        colors: ["green", "yellow"],
         availableColors: 2,
         sizes: ["60*90"],
         sizePrices: {
@@ -149,7 +140,6 @@ const products = [
         id: 107,
         name: "Paisley Print",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Paisley Print with Jaipuri Design , 1 Pillow Cover",
         images: [
@@ -159,7 +149,6 @@ const products = [
         ],
         colors: ["Beige", "grey", "pink"],
         availableColors: 3,
-        sizes: ["60*90"],
         sizePrices: {
             "60*90": 350
         }
@@ -169,7 +158,6 @@ const products = [
         id: 108,
         name: "Pattern Design",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Symattric pattern on Pure cotton , 1 pillow Cover",
         images: [
@@ -177,7 +165,6 @@ const products = [
         ],
         colors: ["blue"],
         availableColors: 1,
-        sizes: ["60*90"],
         sizePrices: {
             "60*90": 350
         }
@@ -187,7 +174,6 @@ const products = [
         id: 109,
         name: "Sanganeri Print",
         category: "single-bedsheets",
-        printType: "Arbana",
         price: 350,
         description: "Sanganeri floral Print Design pure cotton , 1 Pillow Cover",
         images: [
@@ -195,9 +181,8 @@ const products = [
             "images/sanganeri_red.jpg",
             "images/sanganeri_yellow.jpg"
         ],
-        colors: ["brown", "red", "yellow"],
+        colors: ["brown", "red", "brown-yellow"],
         availableColors: 3,
-        sizes: ["60*90"],
         sizePrices: {
             "60*90": 350
         }
@@ -220,7 +205,7 @@ const products = [
             "images/bedsheet-mandala3.jpg",
             "images/bedsheet-mandala4.jpg"
         ],
-        colors: ["Blue", "Light Blue", "Orange", "Red"],
+        colors: ["Blue", "Blue", "Orange", "Red"],
         availableColors: 4,
         sizes: ["93*108"],
         sizePrices: {
@@ -258,12 +243,11 @@ const products = [
         price: 500,
         description: "Red royal elephants and paisley patterns, artisanal hand-block, 2 pillow covers",
         images: [
-            "images/bedsheet-elephant-brown.jpg",
             "images/bedsheet-elephant-blue.jpg",
             "images/bedsheet-elephant-green.jpg"
         ],
-        colors: ["Maroon-Red", "Blue", "Green"],
-        availableColors: 3,
+        colors: ["Blue", "Green"],
+        availableColors: 2,
         sizes: ["90*108"],
         sizePrices: {
             "90*108": 550
@@ -305,7 +289,7 @@ const products = [
             "images/Sanganeri-handblock-prints2.jpg",
             "images/Sanganeri-handblock-prints3.jpg"
         ],
-        colors: ["Lime Yellow", "Blue", "Gray", "Pink"],
+        colors: ["Lime Yellow", "Gray", "Blue", "Pink"],
         availableColors: 4,
         sizes: ["90*108"],
         sizePrices: {
@@ -325,7 +309,7 @@ const products = [
             "images/bedsheet-paisley-swirl2.jpg",
             "images/bedsheet-paisley-swirl3.jpg"
         ],
-        colors: ["Grey-Green", "Maroon-Green", "Yellow-Grey"],
+        colors: ["Green", "Yellow", "Maroon-Red"],
         availableColors: 3,
         sizes: ["90*108"],
         sizePrices: {
@@ -354,24 +338,24 @@ const products = [
         }
     },
 
-    {
-        id: 8,
-        name: "Arbana Pashmina Silk Jacquard",
-        category: "double-bedsheets",
-        printType: "Arbana",
-        price: 500,
-        description: "High-end Kashmiri jacquard-style craftsmanship, luxury damask pattern, 2 pillow covers",
-        images: [
-            "images/damask-pattern-yellow.jpg",
-            "images/damask-pattern-grey.jpg"
-        ],
-        colors: ["Yellow", "Grey"],
-        availableColors: 2,
-        sizes: ["90*108"],
-        sizePrices: {
-            "90*108": 550
-        }
-    },
+//    {
+//        id: 8,
+//        name: "Arbana Pashmina Silk Jacquard",
+//        category: "double-bedsheets",
+//        printType: "Arbana",
+//        price: 500,
+//        description: "High-end Kashmiri jacquard-style craftsmanship, luxury damask pattern, 2 pillow covers",
+//        images: [
+//            "images/damask-pattern-yellow.jpg",
+//            "images/damask-pattern-grey.jpg"
+//        ],
+//        colors: ["Yellow", "Grey"],
+//        availableColors: 2,
+//        sizes: ["90*108"],
+//        sizePrices: {
+//            "90*108": 550
+//        }
+//    },
 
     {
         id: 9,
@@ -396,44 +380,44 @@ const products = [
     // DOUBLE BEDSHEETS — AJRAK PRINTS
     // ═══════════════════════════════════════════════════════
 
-    {
-        id: 20,
-        name: "Ajrak Hand-block Print",
-        category: "double-bedsheets",
-        printType: "Ajrak",
-        price: 600,
-        description: "Authentic Ajrak resist-block print from Barmer, geometric motifs, natural dyes, 2 pillow covers",
-        images: [
-            "images/ajrak-double-blue.jpg",
-            "images/ajrak-double-red.jpg",
-            "images/ajrak-double-black.jpg"
-        ],
-        colors: ["Indigo Blue", "Brick Red", "Black-Gold"],
-        availableColors: 3,
-        sizes: ["90*108"],
-        sizePrices: {
-            "90*108": 550
-        }
-    },
-
-    {
-        id: 21,
-        name: "Ajrak Barmeri Floral",
-        category: "double-bedsheets",
-        printType: "Ajrak",
-        price: 600,
-        description: "Barmeri Ajrak with floral medallions and geometric borders, natural dyes, 2 pillow covers",
-        images: [
-            "images/ajrak-floral-blue.jpg",
-            "images/ajrak-floral-maroon.jpg"
-        ],
-        colors: ["Deep Blue", "Maroon"],
-        availableColors: 2,
-        sizes: ["90*108"],
-        sizePrices: {
-            "90*108": 550
-        }
-    },
+//    {
+//        id: 20,
+//        name: "Ajrak Hand-block Print",
+//        category: "double-bedsheets",
+//        printType: "Ajrak",
+//        price: 600,
+//        description: "Authentic Ajrak resist-block print from Barmer, geometric motifs, natural dyes, 2 pillow covers",
+//        images: [
+//            "images/ajrak-double-blue.jpg",
+//            "images/ajrak-double-red.jpg",
+//            "images/ajrak-double-black.jpg"
+//        ],
+//        colors: ["Indigo Blue", "Brick Red", "Black-Gold"],
+//        availableColors: 3,
+//        sizes: ["90*108"],
+//        sizePrices: {
+//            "90*108": 550
+//        }
+//    },
+//
+//    {
+//        id: 21,
+//        name: "Ajrak Barmeri Floral",
+ //       category: "double-bedsheets",
+ //       printType: "Ajrak",
+ //       price: 600,
+ //       description: "Barmeri Ajrak with floral medallions and geometric borders, natural dyes, 2 pillow covers",
+ //       images: [
+ //           "images/ajrak-floral-blue.jpg",
+ //           "images/ajrak-floral-maroon.jpg"
+ //       ],
+ //       colors: ["Deep Blue", "Maroon"],
+ //       availableColors: 2,
+ //       sizes: ["90*108"],
+ //       sizePrices: {
+ //           "90*108": 550
+ //       }
+ //   },
 
     // ═══════════════════════════════════════════════════════
     // SUITS & KURTIS
