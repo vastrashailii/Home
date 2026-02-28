@@ -63,23 +63,23 @@ const products = [
         }
     },
 
-    {
-        id: 103,
-        name: "Rajasthani Handblock Print",
-        category: "single-bedsheets",
-        price: 350,
-        description: "Authentic Rajasthani hand-block , natural dyes, 1 pillow cover",
-        images: [
-            "images/handblock_jaipuri_blue.jpg",
-            "images/handblock_jaipuri_brown.jpg"
-        ],
-        colors: ["blue", "Brown"],
-        availableColors: 2,
-        sizes: ["60*90"],
-        sizePrices: {
-            "60*90": 350
-        }
-    },
+//    {
+//        id: 103,
+//        name: "Rajasthani Handblock Print",
+//        category: "single-bedsheets",
+//        price: 350,
+//        description: "Authentic Rajasthani hand-block , natural dyes, 1 pillow cover",
+//        images: [
+//            "images/handblock_jaipuri_blue.jpg",
+//            "images/handblock_jaipuri_brown.jpg"
+//        ],
+//        colors: ["blue", "Brown"],
+//        availableColors: 2,
+//        sizes: ["60*90"],
+//        sizePrices: {
+//            "60*90": 350
+//        }
+//    },
 
     {
         id: 104,
